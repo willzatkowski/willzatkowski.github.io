@@ -11,8 +11,12 @@ website:
       - about.qmd
       - text: Projects
         menu:
+          - href: sql_project.qmd
+            text: SQL Project
           - href: text_analysis_project.qmd
             text: Text-Analysis Project
+          - href: r_package.qmd
+            text: R Package
       
 
 format:

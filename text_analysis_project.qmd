@@ -2,7 +2,11 @@
 title: "Text-Analysis Project"
 ---
 
-# Introduction & Background
+## Github Project Files
+
+https://github.com/ADC-405-S26/Project_3_TextAnalysis_Team_7
+
+## Introduction & Background
 
 Religious texts have shaped history not only through what they say, but also through how they are written. The four Gospels in the Bible are often read together because they each tell the story of Jesus from four different perspectives. While they overlap in many places, they also differ in structure, emphasis, and wording. These differences make the Gospels a useful case for text analysis, where we can compare not just what each Gospel says, but how each one says it. In this blog post, we will use computational tools to explore whether the Gospels’ language patterns reflect their historical and literary relationships. To be more specific, our primary goal is to identify which words and themes are most distinctive from one Gospel to the next, and understand the linguistic differences tied to the unique writing styles of each author.
 
@@ -37,7 +41,7 @@ library(zoo)
 ```
 
 
-# Data Explanation
+## Data Explanation
 
 The data used in this project contains the King James version of the four Gospels: Matthew, Mark, Luke, and John, from Gutenberg metadata. Each observation represents a portion of Gospel text, organized by Gospel and verse-level information. The raw version of our initial dataset includes the Gutenberg-assigned ID for each gospel, the free-form text, the title, and the Gospel name. 
 
@@ -118,7 +122,7 @@ gospels_clean <- gospels_raw |>
 ```
 
 
-# Rolling Sentiment Analysis of each Gospel
+## Rolling Sentiment Analysis of each Gospel
 
 ```{r}
 #| include: false
@@ -473,7 +477,7 @@ head(theme_scores)
 
 ```
 
-# Exploring Distinctive Thematic Language between the four Gospels
+## Exploring Distinctive Thematic Language between the four Gospels
 
 First, we wanted to compare the Gospels through the specific types of language they emphasize. To do so, we split core words and phrases throughout the bible into 6 themes for later sentiment analysis: forgiveness, love, faith, miracles, evil, and death. Focusing on a smaller subset of words forces the analysis to center more directly on the theological and emotional language that shapes each Gospel. However, using sentiment analysis with religious phrases and wording can become quite buggy. Therefore, we had to manually create a 'lexicon' that not only categorized the custom set of words into these themes, but also gave a connotation score from -2 to 2: negative values represent darker or conflict-oriented language and positive values represent redemptive or hopeful language.
 
@@ -570,7 +574,7 @@ ggplot(theme_scores_display,
 Luke, Mark, and Matthew all demonstrate strong similarities in the forgiveness, miracles, and faith themes. Forgiveness appears to be heavily significant across these three Gospels, with Luke having the highest weighted connotation score at 2.3, followed by Mark at 1.8 and Matthew at 1.7. In contrast, the textual data in John results in a value of 0. This suggests that, based on the forgiveness words included in the lexicon, the Gospel of John did not contain any matches for this theme. Or, for this comparison, the theme of forgiveness is less evident than the other Gospels. Still, of course, this does not inherently mean that the concept of forgiveness is absent from John; rather, it means that this specific method of analysis did not identify words from that theme in the text. At the same time, John also shows stronger results in the themes of miracles and faith. Its weighted connotation scores for these themes are higher than the other Gospels, indicating that John may place greater emphasis on stories of miracles and faith than the other Gospels. Otherwise, the themes of love, evil, and death remain quite similar between Gospels.
 
 
-# Using 'stylo' R Package to Measure Literary Style
+## Using 'stylo' R Package to Measure Literary Style
 
 To further analyze stylometric (the computational analysis of literary style) patterns in the four Gospels, we used the stylo R package. With this package, we wanted to better identify the distinctive writing styles of Matthew, Mark, Luke, and John, as well as understand the unique linguistic patterns among them. This is done through ‘stylos’ processing procedures, which measure features such as word frequency and vocabulary. In machine-learning terms, this is an unsupervised analysis, as the algorithm is not trained to predict any known variable but instead groups the Gospels based on their stylistic similarities and differences. For this analysis, we used the King James Version texts from Project Gutenberg and compared the four texts specifically using the 300 most frequent words.
 
@@ -717,7 +721,7 @@ Overall, our analyses show that computational text analysis can reveal meaningfu
 
 
 
-# References/Sources
+## References/Sources
 
 * https://www.britannica.com/topic/biblical-literature/The-Synoptic-Gospels?utm_source
 
