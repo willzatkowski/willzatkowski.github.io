@@ -1,0 +1,13 @@
+Source,Target,Weight,Type
+John_KJV,Luke_KJV,4,undirected
+John_KJV,Mark_KJV,2,undirected
+John_KJV,Matthew_KJV,3,undirected
+Luke_KJV,John_KJV,4,undirected
+Luke_KJV,Mark_KJV,4,undirected
+Luke_KJV,Matthew_KJV,6,undirected
+Mark_KJV,John_KJV,2,undirected
+Mark_KJV,Luke_KJV,4,undirected
+Mark_KJV,Matthew_KJV,5,undirected
+Matthew_KJV,John_KJV,3,undirected
+Matthew_KJV,Luke_KJV,6,undirected
+Matthew_KJV,Mark_KJV,5,undirected
