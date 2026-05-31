@@ -1,5 +1,15 @@
 ---
-title: "project"
+title: "Will Zatkowski"
+toc: false
+about: 
+  template: jolla
+  links:
+    - text: LinkedIn
+      href: www.linkedin.com/in/william-zatkowski-259096341
+      target: _blank
+    - text: GitHub
+      href: https://github.com/willzatkowski
+      target: _blank
 ---
 
 This is a Quarto website.

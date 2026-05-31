@@ -3,12 +3,17 @@ project:
   output-dir: docs
 
 website:
-  title: "project"
+  title: "Will Zatkowski"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - text: Projects
+        menu:
+          - href: text_analysis_project.qmd
+            text: Text-Analysis Project
+      
 
 format:
   html:
