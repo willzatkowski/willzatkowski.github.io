@@ -2,9 +2,9 @@
 title: "Text-Analysis Project"
 ---
 
-## Github Project Files
+## Github Project Repo
 
-https://github.com/ADC-405-S26/Project_3_TextAnalysis_Team_7
+[Github Repo](https://github.com/ADC-405-S26/Project_3_TextAnalysis_Team_7)
 
 ## Introduction & Background
 
