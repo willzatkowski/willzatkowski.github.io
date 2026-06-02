@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>SQL Project – Will Zatkowski</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c82218b12ac0f327fa8bd7d074ce2147.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Will Zatkowski</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Projects</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
+        <li>
+    <a class="dropdown-item" href="../sql_project.html">
+ <span class="dropdown-text">SQL Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../text_analysis_project.html">
+ <span class="dropdown-text">Text-Analysis Project</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../r_package.html">
+ <span class="dropdown-text">R Package</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#github-repo" id="toc-github-repo" class="nav-link active" data-scroll-target="#github-repo">Github Repo</a></li>
+  <li><a href="#project-name-oooooooo" id="toc-project-name-oooooooo" class="nav-link" data-scroll-target="#project-name-oooooooo">Project Name oooooooo</a>
+  <ul class="collapse">
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">—————————————————————————</a></li>
+  </ul></li>
+  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">Accessing data</a>
+  <ul class="collapse">
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">—————————————————————————</a></li>
+  </ul></li>
+  <li><a href="#designing-the-database" id="toc-designing-the-database" class="nav-link" data-scroll-target="#designing-the-database">Designing the database</a>
+  <ul class="collapse">
+  <li><a href="#dropping-tables" id="toc-dropping-tables" class="nav-link" data-scroll-target="#dropping-tables">Dropping Tables</a></li>
+  <li><a href="#creating-athletes-table" id="toc-creating-athletes-table" class="nav-link" data-scroll-target="#creating-athletes-table">Creating athletes table</a></li>
+  <li><a href="#creating-cmj-table" id="toc-creating-cmj-table" class="nav-link" data-scroll-target="#creating-cmj-table">creating CMJ table</a></li>
+  <li><a href="#mr-and-sj-tables" id="toc-mr-and-sj-tables" class="nav-link" data-scroll-target="#mr-and-sj-tables">MR and SJ tables</a></li>
+  <li><a href="#query-1" id="toc-query-1" class="nav-link" data-scroll-target="#query-1">Query 1:</a></li>
+  <li><a href="#data-visualization-comparing-left-and-right-leg-propulsive-force" id="toc-data-visualization-comparing-left-and-right-leg-propulsive-force" class="nav-link" data-scroll-target="#data-visualization-comparing-left-and-right-leg-propulsive-force">Data Visualization: Comparing Left and Right leg propulsive force</a>
+  <ul class="collapse">
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">—————————————————————————</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a>
+  <ul class="collapse">
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">—————————————————————————</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">SQL Project</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="github-repo" class="level2">
+<h2 class="anchored" data-anchor-id="github-repo">Github Repo</h2>
+<p><a href="https://github.com/ADC-405-S26/Project_2_SQL_Team_7">Github Repo</a></p>
+</section>
+<section id="project-name-oooooooo" class="level2">
+<h2 class="anchored" data-anchor-id="project-name-oooooooo">Project Name oooooooo</h2>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">—————————————————————————</h3>
+</section>
+</section>
+<section id="accessing-data" class="level1">
+<h1>Accessing data</h1>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">—————————————————————————</h3>
+</section>
+</section>
+<section id="designing-the-database" class="level1">
+<h1>Designing the database</h1>
+<section id="dropping-tables" class="level2">
+<h2 class="anchored" data-anchor-id="dropping-tables">Dropping Tables</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> CMJ_cleaned;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> MR_cleaned;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> SJ_cleaned;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> athletes;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="creating-athletes-table" class="level2">
+<h2 class="anchored" data-anchor-id="creating-athletes-table">Creating athletes table</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> athletes (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> athletes <span class="kw">FROM</span> <span class="st">'athletes.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> athletes <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>5 records</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">athlete_id</th>
+<th style="text-align: left;">athlete_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nAiyAjZ2aRnkzalasuPD</td>
+<td style="text-align: left;">Gabriel Vitale</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">YqlkR44ElDRiHJYlZgkK</td>
+<td style="text-align: left;">Zaiden Ocampo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">MW9hAu2eCeq1c0Nsa6CR</td>
+<td style="text-align: left;">Ethan Reyzelman</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="creating-cmj-table" class="level2">
+<h2 class="anchored" data-anchor-id="creating-cmj-table">creating CMJ table</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CMJ_cleaned (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>impulse_ratio <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>positive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>countermovement_depth_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>unweighting_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_rfd_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>unweighting_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>right_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>force_at_min_displacement_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>avg_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>relative_braking_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>relative_braking_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>avg_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>left_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>l_r_peak_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>right_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>positive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>relative_force_at_min_displacement_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>braking_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>braking_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>left_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>propulsive_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>braking_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>peak_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>braking_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>peak_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>l_r_braking_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> CMJ_cleaned <span class="kw">FROM</span> <span class="st">'CMJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> CMJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: right;">timestamp</th>
+<th style="text-align: left;">testType_name</th>
+<th style="text-align: left;">testType_canonicalId</th>
+<th style="text-align: left;">athlete_id</th>
+<th style="text-align: left;">athlete_name</th>
+<th style="text-align: right;">right_avg_propulsive_force_n</th>
+<th style="text-align: right;">relative_propulsive_net_impulse_n_s_kg</th>
+<th style="text-align: right;">propulsive_phase_s</th>
+<th style="text-align: right;">peak_relative_braking_force_percent</th>
+<th style="text-align: right;">impulse_ratio</th>
+<th style="text-align: right;">positive_impulse_n_s</th>
+<th style="text-align: right;">countermovement_depth_m</th>
+<th style="text-align: right;">left_force_at_peak_propulsive_force_n</th>
+<th style="text-align: right;">jump_height_m</th>
+<th style="text-align: right;">unweighting_phase_s</th>
+<th style="text-align: right;">relative_propulsive_impulse_n_s_kg</th>
+<th style="text-align: right;">landing_phase_s</th>
+<th style="text-align: right;">l_r_avg_braking_rfd_percent</th>
+<th style="text-align: right;">peak_relative_propulsive_power_w_kg</th>
+<th style="text-align: right;">stiffness_n_m</th>
+<th style="text-align: right;">avg_relative_braking_power_w_kg</th>
+<th style="text-align: right;">unweighting_phase_percent</th>
+<th style="text-align: right;">right_force_at_peak_braking_force_n</th>
+<th style="text-align: right;">landing_performance_index</th>
+<th style="text-align: right;">rsi</th>
+<th style="text-align: right;">right_avg_braking_force_n</th>
+<th style="text-align: right;">l_r_avg_propulsive_force_percent</th>
+<th style="text-align: right;">avg_relative_propulsive_force_percent</th>
+<th style="text-align: right;">left_avg_landing_force_n</th>
+<th style="text-align: right;">l_r_avg_braking_force_percent</th>
+<th style="text-align: right;">peak_propulsive_power_w</th>
+<th style="text-align: right;">force_at_min_displacement_n</th>
+<th style="text-align: right;">avg_braking_power_w</th>
+<th style="text-align: right;">peak_landing_force_n</th>
+<th style="text-align: right;">relative_braking_impulse_n_s_kg</th>
+<th style="text-align: right;">right_avg_landing_force_n</th>
+<th style="text-align: right;">avg_propulsive_force_n</th>
+<th style="text-align: right;">flight_time_s</th>
+<th style="text-align: right;">jump_momentum_kg_m_s</th>
+<th style="text-align: right;">relative_braking_net_impulse_n_s_kg</th>
+<th style="text-align: right;">peak_braking_force_n</th>
+<th style="text-align: right;">avg_braking_velocity_m_s</th>
+<th style="text-align: right;">left_avg_braking_force_n</th>
+<th style="text-align: right;">landing_height_m</th>
+<th style="text-align: right;">time_to_takeoff_s</th>
+<th style="text-align: right;">avg_propulsive_velocity_m_s</th>
+<th style="text-align: right;">takeoff_velocity_m_s</th>
+<th style="text-align: right;">l_r_peak_braking_force_percent</th>
+<th style="text-align: right;">time_to_stabilization_ms</th>
+<th style="text-align: right;">avg_propulsive_power_w</th>
+<th style="text-align: right;">right_avg_braking_rfd_n_s</th>
+<th style="text-align: right;">l_r_peak_propulsive_force_percent</th>
+<th style="text-align: right;">right_force_at_peak_propulsive_force_n</th>
+<th style="text-align: right;">avg_relative_braking_force_percent</th>
+<th style="text-align: right;">relative_peak_landing_force_percent</th>
+<th style="text-align: right;">peak_relative_braking_power_w_kg</th>
+<th style="text-align: right;">system_weight_n</th>
+<th style="text-align: right;">m_rsi</th>
+<th style="text-align: right;">peak_relative_propulsive_force_percent</th>
+<th style="text-align: right;">peak_velocity_m_s</th>
+<th style="text-align: right;">l_r_avg_landing_force_percent</th>
+<th style="text-align: right;">positive_net_impulse_n_s</th>
+<th style="text-align: right;">landing_stiffness_n_m</th>
+<th style="text-align: right;">relative_force_at_min_displacement_percent</th>
+<th style="text-align: right;">braking_net_impulse_n_s</th>
+<th style="text-align: right;">braking_phase_percent</th>
+<th style="text-align: right;">left_avg_braking_rfd_n_s</th>
+<th style="text-align: right;">propulsive_phase_percent</th>
+<th style="text-align: right;">avg_relative_propulsive_power_w_kg</th>
+<th style="text-align: right;">braking_impulse_n_s</th>
+<th style="text-align: right;">right_force_at_peak_landing_force_n</th>
+<th style="text-align: right;">propulsive_net_impulse_n_s</th>
+<th style="text-align: right;">l_r_peak_landing_force_percent</th>
+<th style="text-align: right;">peak_braking_power_w</th>
+<th style="text-align: right;">avg_braking_force_n</th>
+<th style="text-align: right;">braking_phase_s</th>
+<th style="text-align: right;">left_avg_propulsive_force_n</th>
+<th style="text-align: right;">avg_landing_force_n</th>
+<th style="text-align: right;">peak_braking_velocity_m_s</th>
+<th style="text-align: right;">peak_propulsive_force_n</th>
+<th style="text-align: right;">braking_rfd_n_s</th>
+<th style="text-align: right;">left_force_at_peak_landing_force_n</th>
+<th style="text-align: right;">l_r_propulsive_impulse_index_percent</th>
+<th style="text-align: right;">left_force_at_peak_braking_force_n</th>
+<th style="text-align: right;">l_r_landing_impulse_index_percent</th>
+<th style="text-align: right;">propulsive_impulse_n_s</th>
+<th style="text-align: right;">l_r_braking_impulse_index_percent</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">UWXb20qF5kOYBwytlpxg</td>
+<td style="text-align: right;">1744913693</td>
+<td style="text-align: left;">Countermovement Jump</td>
+<td style="text-align: left;">7nNduHeM5zETPjHxvm7s</td>
+<td style="text-align: left;">nAiyAjZ2aRnkzalasuPD</td>
+<td style="text-align: left;">Gabriel Vitale</td>
+<td style="text-align: right;">566.1739</td>
+<td style="text-align: right;">2.9185</td>
+<td style="text-align: right;">0.322</td>
+<td style="text-align: right;">238.6471</td>
+<td style="text-align: right;">2.1098</td>
+<td style="text-align: right;">563.7935</td>
+<td style="text-align: right;">-0.4282</td>
+<td style="text-align: right;">701</td>
+<td style="text-align: right;">0.4305</td>
+<td style="text-align: right;">0.401</td>
+<td style="text-align: right;">6.0774</td>
+<td style="text-align: right;">0.279</td>
+<td style="text-align: right;">6.3570</td>
+<td style="text-align: right;">59.9857</td>
+<td style="text-align: right;">-3304.592</td>
+<td style="text-align: right;">-14.3621</td>
+<td style="text-align: right;">44.1630</td>
+<td style="text-align: right;">721</td>
+<td style="text-align: right;">2.0321</td>
+<td style="text-align: right;">0.7026</td>
+<td style="text-align: right;">538.2919</td>
+<td style="text-align: right;">1.1087</td>
+<td style="text-align: right;">192.0318</td>
+<td style="text-align: right;">370.3193</td>
+<td style="text-align: right;">-2.2386</td>
+<td style="text-align: right;">3646.092</td>
+<td style="text-align: right;">1415</td>
+<td style="text-align: right;">-872.9665</td>
+<td style="text-align: right;">4849</td>
+<td style="text-align: right;">3.1982</td>
+<td style="text-align: right;">463.5916</td>
+<td style="text-align: right;">1145.043</td>
+<td style="text-align: right;">0.638</td>
+<td style="text-align: right;">176.6459</td>
+<td style="text-align: right;">1.3834</td>
+<td style="text-align: right;">1423</td>
+<td style="text-align: right;">-0.9346</td>
+<td style="text-align: right;">514.7189</td>
+<td style="text-align: right;">0.5669</td>
+<td style="text-align: right;">0.908</td>
+<td style="text-align: right;">1.6734</td>
+<td style="text-align: right;">2.9062</td>
+<td style="text-align: right;">-1.3352</td>
+<td style="text-align: right;">830</td>
+<td style="text-align: right;">1797.581</td>
+<td style="text-align: right;">2070.270</td>
+<td style="text-align: right;">-0.8487</td>
+<td style="text-align: right;">713</td>
+<td style="text-align: right;">176.5973</td>
+<td style="text-align: right;">813.2113</td>
+<td style="text-align: right;">-18.9909</td>
+<td style="text-align: right;">596.278</td>
+<td style="text-align: right;">0.4741</td>
+<td style="text-align: right;">237.1377</td>
+<td style="text-align: right;">3.0444</td>
+<td style="text-align: right;">-11.1849</td>
+<td style="text-align: right;">261.4806</td>
+<td style="text-align: right;">-2852.0149</td>
+<td style="text-align: right;">237.3054</td>
+<td style="text-align: right;">84.0841</td>
+<td style="text-align: right;">20.3744</td>
+<td style="text-align: right;">2351.351</td>
+<td style="text-align: right;">35.4626</td>
+<td style="text-align: right;">29.5739</td>
+<td style="text-align: right;">194.3955</td>
+<td style="text-align: right;">2592</td>
+<td style="text-align: right;">177.3965</td>
+<td style="text-align: right;">-6.9086</td>
+<td style="text-align: right;">-1154.3152</td>
+<td style="text-align: right;">1053.0108</td>
+<td style="text-align: right;">0.185</td>
+<td style="text-align: right;">578.8696</td>
+<td style="text-align: right;">833.9108</td>
+<td style="text-align: right;">-1.3863</td>
+<td style="text-align: right;">1414</td>
+<td style="text-align: right;">4421.622</td>
+<td style="text-align: right;">2257</td>
+<td style="text-align: right;">2.1785</td>
+<td style="text-align: right;">702</td>
+<td style="text-align: right;">-20.1262</td>
+<td style="text-align: right;">369.3980</td>
+<td style="text-align: right;">-4.4134</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">nJZpbXqzxJiwGCBjZFyR</td>
+<td style="text-align: right;">1744913708</td>
+<td style="text-align: left;">Countermovement Jump</td>
+<td style="text-align: left;">7nNduHeM5zETPjHxvm7s</td>
+<td style="text-align: left;">nAiyAjZ2aRnkzalasuPD</td>
+<td style="text-align: left;">Gabriel Vitale</td>
+<td style="text-align: right;">559.6081</td>
+<td style="text-align: right;">2.9440</td>
+<td style="text-align: right;">0.347</td>
+<td style="text-align: right;">237.1680</td>
+<td style="text-align: right;">2.0134</td>
+<td style="text-align: right;">590.8685</td>
+<td style="text-align: right;">-0.4602</td>
+<td style="text-align: right;">710</td>
+<td style="text-align: right;">0.4389</td>
+<td style="text-align: right;">0.398</td>
+<td style="text-align: right;">6.3481</td>
+<td style="text-align: right;">0.298</td>
+<td style="text-align: right;">9.6933</td>
+<td style="text-align: right;">59.6063</td>
+<td style="text-align: right;">-3061.660</td>
+<td style="text-align: right;">-15.0958</td>
+<td style="text-align: right;">42.2505</td>
+<td style="text-align: right;">716</td>
+<td style="text-align: right;">1.7666</td>
+<td style="text-align: right;">0.6677</td>
+<td style="text-align: right;">542.9137</td>
+<td style="text-align: right;">-1.0593</td>
+<td style="text-align: right;">186.1515</td>
+<td style="text-align: right;">126.1300</td>
+<td style="text-align: right;">-3.6924</td>
+<td style="text-align: right;">3614.885</td>
+<td style="text-align: right;">1409</td>
+<td style="text-align: right;">-915.5008</td>
+<td style="text-align: right;">3363</td>
+<td style="text-align: right;">3.3948</td>
+<td style="text-align: right;">263.8297</td>
+<td style="text-align: right;">1107.484</td>
+<td style="text-align: right;">0.629</td>
+<td style="text-align: right;">177.9665</td>
+<td style="text-align: right;">1.4622</td>
+<td style="text-align: right;">1411</td>
+<td style="text-align: right;">-0.9855</td>
+<td style="text-align: right;">504.2487</td>
+<td style="text-align: right;">0.5265</td>
+<td style="text-align: right;">0.942</td>
+<td style="text-align: right;">1.6552</td>
+<td style="text-align: right;">2.9345</td>
+<td style="text-align: right;">-1.4883</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1739.707</td>
+<td style="text-align: right;">1868.020</td>
+<td style="text-align: right;">0.9240</td>
+<td style="text-align: right;">697</td>
+<td style="text-align: right;">176.0123</td>
+<td style="text-align: right;">565.2699</td>
+<td style="text-align: right;">-19.7543</td>
+<td style="text-align: right;">594.937</td>
+<td style="text-align: right;">0.4659</td>
+<td style="text-align: right;">236.4956</td>
+<td style="text-align: right;">3.0560</td>
+<td style="text-align: right;">-35.3113</td>
+<td style="text-align: right;">267.2228</td>
+<td style="text-align: right;">-0.4866</td>
+<td style="text-align: right;">236.8318</td>
+<td style="text-align: right;">88.6784</td>
+<td style="text-align: right;">20.9130</td>
+<td style="text-align: right;">2269.035</td>
+<td style="text-align: right;">36.8365</td>
+<td style="text-align: right;">28.6863</td>
+<td style="text-align: right;">205.8810</td>
+<td style="text-align: right;">3147</td>
+<td style="text-align: right;">178.5444</td>
+<td style="text-align: right;">-87.1543</td>
+<td style="text-align: right;">-1198.0213</td>
+<td style="text-align: right;">1047.1624</td>
+<td style="text-align: right;">0.197</td>
+<td style="text-align: right;">547.8761</td>
+<td style="text-align: right;">389.9598</td>
+<td style="text-align: right;">-1.4624</td>
+<td style="text-align: right;">1407</td>
+<td style="text-align: right;">4137.056</td>
+<td style="text-align: right;">216</td>
+<td style="text-align: right;">-2.0950</td>
+<td style="text-align: right;">695</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">384.9875</td>
+<td style="text-align: right;">-7.1716</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">49DB5syuOsvX0kqmKoD4</td>
+<td style="text-align: right;">1744913724</td>
+<td style="text-align: left;">Countermovement Jump</td>
+<td style="text-align: left;">7nNduHeM5zETPjHxvm7s</td>
+<td style="text-align: left;">nAiyAjZ2aRnkzalasuPD</td>
+<td style="text-align: left;">Gabriel Vitale</td>
+<td style="text-align: right;">562.0419</td>
+<td style="text-align: right;">2.9642</td>
+<td style="text-align: right;">0.358</td>
+<td style="text-align: right;">222.7795</td>
+<td style="text-align: right;">2.6720</td>
+<td style="text-align: right;">572.5110</td>
+<td style="text-align: right;">-0.4331</td>
+<td style="text-align: right;">678</td>
+<td style="text-align: right;">0.4415</td>
+<td style="text-align: right;">0.540</td>
+<td style="text-align: right;">6.4761</td>
+<td style="text-align: right;">0.227</td>
+<td style="text-align: right;">7.5653</td>
+<td style="text-align: right;">61.4882</td>
+<td style="text-align: right;">-3048.179</td>
+<td style="text-align: right;">-10.8830</td>
+<td style="text-align: right;">49.4959</td>
+<td style="text-align: right;">652</td>
+<td style="text-align: right;">2.1289</td>
+<td style="text-align: right;">0.5646</td>
+<td style="text-align: right;">476.7668</td>
+<td style="text-align: right;">-3.0509</td>
+<td style="text-align: right;">184.0977</td>
+<td style="text-align: right;">157.0786</td>
+<td style="text-align: right;">-1.2706</td>
+<td style="text-align: right;">3713.825</td>
+<td style="text-align: right;">1320</td>
+<td style="text-align: right;">-657.3247</td>
+<td style="text-align: right;">3265</td>
+<td style="text-align: right;">3.0027</td>
+<td style="text-align: right;">261.2887</td>
+<td style="text-align: right;">1090.804</td>
+<td style="text-align: right;">0.616</td>
+<td style="text-align: right;">177.7462</td>
+<td style="text-align: right;">1.1093</td>
+<td style="text-align: right;">1320</td>
+<td style="text-align: right;">-0.7774</td>
+<td style="text-align: right;">464.8031</td>
+<td style="text-align: right;">0.4834</td>
+<td style="text-align: right;">1.091</td>
+<td style="text-align: right;">1.6109</td>
+<td style="text-align: right;">2.9429</td>
+<td style="text-align: right;">1.2121</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1687.380</td>
+<td style="text-align: right;">1740.933</td>
+<td style="text-align: right;">-1.6679</td>
+<td style="text-align: right;">701</td>
+<td style="text-align: right;">158.9110</td>
+<td style="text-align: right;">551.0418</td>
+<td style="text-align: right;">-13.3347</td>
+<td style="text-align: right;">592.514</td>
+<td style="text-align: right;">0.4046</td>
+<td style="text-align: right;">232.7371</td>
+<td style="text-align: right;">3.0698</td>
+<td style="text-align: right;">-24.9088</td>
+<td style="text-align: right;">246.0358</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">222.7795</td>
+<td style="text-align: right;">67.0033</td>
+<td style="text-align: right;">17.6902</td>
+<td style="text-align: right;">2025.907</td>
+<td style="text-align: right;">32.8139</td>
+<td style="text-align: right;">27.9372</td>
+<td style="text-align: right;">181.3585</td>
+<td style="text-align: right;">954</td>
+<td style="text-align: right;">179.0325</td>
+<td style="text-align: right;">41.5620</td>
+<td style="text-align: right;">-805.4032</td>
+<td style="text-align: right;">941.5699</td>
+<td style="text-align: right;">0.193</td>
+<td style="text-align: right;">528.7626</td>
+<td style="text-align: right;">418.3673</td>
+<td style="text-align: right;">-1.1213</td>
+<td style="text-align: right;">1379</td>
+<td style="text-align: right;">3766.839</td>
+<td style="text-align: right;">2311</td>
+<td style="text-align: right;">-5.9119</td>
+<td style="text-align: right;">668</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">391.1525</td>
+<td style="text-align: right;">-2.5450</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b5dQFc9Qlm3xQjUGhe1f</td>
+<td style="text-align: right;">1744934656</td>
+<td style="text-align: left;">Countermovement Jump</td>
+<td style="text-align: left;">7nNduHeM5zETPjHxvm7s</td>
+<td style="text-align: left;">YqlkR44ElDRiHJYlZgkK</td>
+<td style="text-align: left;">Zaiden Ocampo</td>
+<td style="text-align: right;">641.2456</td>
+<td style="text-align: right;">2.6519</td>
+<td style="text-align: right;">0.342</td>
+<td style="text-align: right;">227.6238</td>
+<td style="text-align: right;">1.7437</td>
+<td style="text-align: right;">682.3240</td>
+<td style="text-align: right;">-0.4026</td>
+<td style="text-align: right;">802</td>
+<td style="text-align: right;">0.3551</td>
+<td style="text-align: right;">0.365</td>
+<td style="text-align: right;">6.0069</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.5562</td>
+<td style="text-align: right;">52.7313</td>
+<td style="text-align: right;">-4014.271</td>
+<td style="text-align: right;">-15.5056</td>
+<td style="text-align: right;">40.7366</td>
+<td style="text-align: right;">805</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.6094</td>
+<td style="text-align: right;">652.1164</td>
+<td style="text-align: right;">-0.5818</td>
+<td style="text-align: right;">178.7173</td>
+<td style="text-align: right;">267.7538</td>
+<td style="text-align: right;">-0.2407</td>
+<td style="text-align: right;">3835.024</td>
+<td style="text-align: right;">1616</td>
+<td style="text-align: right;">-1127.6827</td>
+<td style="text-align: right;">3942</td>
+<td style="text-align: right;">3.3750</td>
+<td style="text-align: right;">428.2678</td>
+<td style="text-align: right;">1275.073</td>
+<td style="text-align: right;">0.546</td>
+<td style="text-align: right;">191.9430</td>
+<td style="text-align: right;">1.5209</td>
+<td style="text-align: right;">1624</td>
+<td style="text-align: right;">-0.9542</td>
+<td style="text-align: right;">648.9841</td>
+<td style="text-align: right;">0.3703</td>
+<td style="text-align: right;">0.896</td>
+<td style="text-align: right;">1.4765</td>
+<td style="text-align: right;">2.6392</td>
+<td style="text-align: right;">0.8621</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1796.795</td>
+<td style="text-align: right;">2365.079</td>
+<td style="text-align: right;">-2.0159</td>
+<td style="text-align: right;">835</td>
+<td style="text-align: right;">182.3654</td>
+<td style="text-align: right;">552.5203</td>
+<td style="text-align: right;">-21.5077</td>
+<td style="text-align: right;">713.458</td>
+<td style="text-align: right;">0.3962</td>
+<td style="text-align: right;">229.4459</td>
+<td style="text-align: right;">2.7542</td>
+<td style="text-align: right;">-23.0616</td>
+<td style="text-align: right;">303.4778</td>
+<td style="text-align: right;">-275.5852</td>
+<td style="text-align: right;">226.5025</td>
+<td style="text-align: right;">110.6104</td>
+<td style="text-align: right;">21.0937</td>
+<td style="text-align: right;">2391.534</td>
+<td style="text-align: right;">38.1696</td>
+<td style="text-align: right;">24.7058</td>
+<td style="text-align: right;">245.4540</td>
+<td style="text-align: right;">1824</td>
+<td style="text-align: right;">192.8674</td>
+<td style="text-align: right;">7.4581</td>
+<td style="text-align: right;">-1564.2051</td>
+<td style="text-align: right;">1301.1005</td>
+<td style="text-align: right;">0.189</td>
+<td style="text-align: right;">633.8275</td>
+<td style="text-align: right;">696.0216</td>
+<td style="text-align: right;">-1.5240</td>
+<td style="text-align: right;">1637</td>
+<td style="text-align: right;">4756.614</td>
+<td style="text-align: right;">2118</td>
+<td style="text-align: right;">-1.1470</td>
+<td style="text-align: right;">819</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">436.8700</td>
+<td style="text-align: right;">-0.4828</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QwcrYqCtwdGYFlxQeSpU</td>
+<td style="text-align: right;">1744934668</td>
+<td style="text-align: left;">Countermovement Jump</td>
+<td style="text-align: left;">7nNduHeM5zETPjHxvm7s</td>
+<td style="text-align: left;">YqlkR44ElDRiHJYlZgkK</td>
+<td style="text-align: left;">Zaiden Ocampo</td>
+<td style="text-align: right;">660.7459</td>
+<td style="text-align: right;">2.7306</td>
+<td style="text-align: right;">0.370</td>
+<td style="text-align: right;">238.7878</td>
+<td style="text-align: right;">1.7483</td>
+<td style="text-align: right;">705.6835</td>
+<td style="text-align: right;">-0.4351</td>
+<td style="text-align: right;">823</td>
+<td style="text-align: right;">0.3739</td>
+<td style="text-align: right;">0.270</td>
+<td style="text-align: right;">6.3603</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-1.0526</td>
+<td style="text-align: right;">53.4547</td>
+<td style="text-align: right;">-3797.150</td>
+<td style="text-align: right;">-16.6104</td>
+<td style="text-align: right;">32.6877</td>
+<td style="text-align: right;">840</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.6925</td>
+<td style="text-align: right;">645.8226</td>
+<td style="text-align: right;">-6.3658</td>
+<td style="text-align: right;">174.9237</td>
+<td style="text-align: right;">215.6648</td>
+<td style="text-align: right;">2.2074</td>
+<td style="text-align: right;">3870.172</td>
+<td style="text-align: right;">1652</td>
+<td style="text-align: right;">-1202.6097</td>
+<td style="text-align: right;">2373</td>
+<td style="text-align: right;">3.3865</td>
+<td style="text-align: right;">404.9313</td>
+<td style="text-align: right;">1242.403</td>
+<td style="text-align: right;">0.572</td>
+<td style="text-align: right;">196.0984</td>
+<td style="text-align: right;">1.5619</td>
+<td style="text-align: right;">1696</td>
+<td style="text-align: right;">-1.0137</td>
+<td style="text-align: right;">674.9785</td>
+<td style="text-align: right;">0.4257</td>
+<td style="text-align: right;">0.826</td>
+<td style="text-align: right;">1.4636</td>
+<td style="text-align: right;">2.7085</td>
+<td style="text-align: right;">0.9434</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1759.780</td>
+<td style="text-align: right;">2580.645</td>
+<td style="text-align: right;">-0.3632</td>
+<td style="text-align: right;">829</td>
+<td style="text-align: right;">185.9618</td>
+<td style="text-align: right;">334.1058</td>
+<td style="text-align: right;">-21.7757</td>
+<td style="text-align: right;">710.254</td>
+<td style="text-align: right;">0.4527</td>
+<td style="text-align: right;">232.5928</td>
+<td style="text-align: right;">2.8172</td>
+<td style="text-align: right;">-30.4975</td>
+<td style="text-align: right;">310.7823</td>
+<td style="text-align: right;">-85.4617</td>
+<td style="text-align: right;">232.5928</td>
+<td style="text-align: right;">113.0813</td>
+<td style="text-align: right;">22.5182</td>
+<td style="text-align: right;">2526.882</td>
+<td style="text-align: right;">44.7942</td>
+<td style="text-align: right;">24.3060</td>
+<td style="text-align: right;">245.1885</td>
+<td style="text-align: right;">1319</td>
+<td style="text-align: right;">197.7010</td>
+<td style="text-align: right;">-11.1673</td>
+<td style="text-align: right;">-1576.5859</td>
+<td style="text-align: right;">1320.8011</td>
+<td style="text-align: right;">0.186</td>
+<td style="text-align: right;">581.6568</td>
+<td style="text-align: right;">620.5962</td>
+<td style="text-align: right;">-1.5748</td>
+<td style="text-align: right;">1652</td>
+<td style="text-align: right;">5107.527</td>
+<td style="text-align: right;">1054</td>
+<td style="text-align: right;">-11.9427</td>
+<td style="text-align: right;">856</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">460.4950</td>
+<td style="text-align: right;">4.3321</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="mr-and-sj-tables" class="level2">
+<h2 class="anchored" data-anchor-id="mr-and-sj-tables">MR and SJ tables</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> MR_cleaned (</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>total_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>number_of_jumps_count <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>peak_jump_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>peak_jump_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>peak_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>l_r_peak_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>peak_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>total_flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>avg_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> MR_cleaned <span class="kw">FROM</span> <span class="st">'MR_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> MR_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 4%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: right;">timestamp</th>
+<th style="text-align: left;">testType_name</th>
+<th style="text-align: left;">testType_canonicalId</th>
+<th style="text-align: left;">athlete_id</th>
+<th style="text-align: left;">athlete_name</th>
+<th style="text-align: right;">system_weight_n</th>
+<th style="text-align: right;">top_3_jumps_avg_jump_height_m</th>
+<th style="text-align: right;">total_contact_time_s</th>
+<th style="text-align: right;">top_5_jumps_avg_jump_height_m</th>
+<th style="text-align: right;">top_5_jumps_avg_m_rsi</th>
+<th style="text-align: right;">number_of_jumps_count</th>
+<th style="text-align: right;">top_3_jumps_avg_m_rsi</th>
+<th style="text-align: right;">top_5_jumps_peak_m_rsi</th>
+<th style="text-align: right;">top_5_jumps_avg_rsi</th>
+<th style="text-align: right;">l_r_avg_force_percent</th>
+<th style="text-align: right;">top_3_jumps_peak_rsi</th>
+<th style="text-align: right;">top_3_jumps_peak_m_rsi</th>
+<th style="text-align: right;">top_5_jumps_peak_rsi</th>
+<th style="text-align: right;">peak_jump_m_rsi</th>
+<th style="text-align: right;">avg_contact_time_s</th>
+<th style="text-align: right;">top_3_jumps_avg_rsi</th>
+<th style="text-align: right;">peak_jump_rsi</th>
+<th style="text-align: right;">avg_rsi</th>
+<th style="text-align: right;">avg_jump_height_m</th>
+<th style="text-align: right;">peak_force_n</th>
+<th style="text-align: right;">avg_m_rsi</th>
+<th style="text-align: right;">top_3_jumps_avg_contact_time_s</th>
+<th style="text-align: right;">l_r_peak_force_percent</th>
+<th style="text-align: right;">peak_jump_height_m</th>
+<th style="text-align: right;">top_5_jumps_avg_contact_time_s</th>
+<th style="text-align: right;">peak_rsi</th>
+<th style="text-align: right;">total_flight_time_s</th>
+<th style="text-align: right;">avg_force_n</th>
+<th style="text-align: right;">peak_m_rsi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BroNJyui1w3rDf90vmEi</td>
+<td style="text-align: right;">1745252766</td>
+<td style="text-align: left;">Multi Rebound</td>
+<td style="text-align: left;">r4fhrkPdYlLxYQxEeM78</td>
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+<td style="text-align: right;">878.297</td>
+<td style="text-align: right;">0.3040</td>
+<td style="text-align: right;">1.822</td>
+<td style="text-align: right;">0.2982</td>
+<td style="text-align: right;">1.6143</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1.6191</td>
+<td style="text-align: right;">1.6937</td>
+<td style="text-align: right;">2.6703</td>
+<td style="text-align: right;">4.2057</td>
+<td style="text-align: right;">2.7624</td>
+<td style="text-align: right;">1.6937</td>
+<td style="text-align: right;">2.7784</td>
+<td style="text-align: right;">1.6937</td>
+<td style="text-align: right;">0.1822</td>
+<td style="text-align: right;">2.6511</td>
+<td style="text-align: right;">2.7624</td>
+<td style="text-align: right;">2.6285</td>
+<td style="text-align: right;">0.2814</td>
+<td style="text-align: right;">6343</td>
+<td style="text-align: right;">1.5440</td>
+<td style="text-align: right;">0.1880</td>
+<td style="text-align: right;">1.0248</td>
+<td style="text-align: right;">0.3066</td>
+<td style="text-align: right;">0.1848</td>
+<td style="text-align: right;">2.7784</td>
+<td style="text-align: right;">4.787</td>
+<td style="text-align: right;">3179.687</td>
+<td style="text-align: right;">1.6937</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gm8geF24nFZhITU3yX4o</td>
+<td style="text-align: right;">1745252823</td>
+<td style="text-align: left;">Multi Rebound</td>
+<td style="text-align: left;">r4fhrkPdYlLxYQxEeM78</td>
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+<td style="text-align: right;">874.950</td>
+<td style="text-align: right;">0.3289</td>
+<td style="text-align: right;">2.092</td>
+<td style="text-align: right;">0.3251</td>
+<td style="text-align: right;">1.6848</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1.6738</td>
+<td style="text-align: right;">1.7379</td>
+<td style="text-align: right;">2.6690</td>
+<td style="text-align: right;">5.1190</td>
+<td style="text-align: right;">2.7098</td>
+<td style="text-align: right;">1.7379</td>
+<td style="text-align: right;">2.7473</td>
+<td style="text-align: right;">1.7379</td>
+<td style="text-align: right;">0.1902</td>
+<td style="text-align: right;">2.6348</td>
+<td style="text-align: right;">2.7098</td>
+<td style="text-align: right;">2.6584</td>
+<td style="text-align: right;">0.3132</td>
+<td style="text-align: right;">6616</td>
+<td style="text-align: right;">1.6474</td>
+<td style="text-align: right;">0.1967</td>
+<td style="text-align: right;">15.3567</td>
+<td style="text-align: right;">0.3353</td>
+<td style="text-align: right;">0.1930</td>
+<td style="text-align: right;">2.7857</td>
+<td style="text-align: right;">5.558</td>
+<td style="text-align: right;">3221.979</td>
+<td style="text-align: right;">1.7379</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ZypAjyRKQ4qQZxEmIArA</td>
+<td style="text-align: right;">1745264832</td>
+<td style="text-align: left;">Multi Rebound</td>
+<td style="text-align: left;">r4fhrkPdYlLxYQxEeM78</td>
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+<td style="text-align: right;">919.930</td>
+<td style="text-align: right;">0.4046</td>
+<td style="text-align: right;">2.042</td>
+<td style="text-align: right;">0.3960</td>
+<td style="text-align: right;">1.7002</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">1.7473</td>
+<td style="text-align: right;">1.8559</td>
+<td style="text-align: right;">2.4387</td>
+<td style="text-align: right;">-2.4818</td>
+<td style="text-align: right;">2.5652</td>
+<td style="text-align: right;">1.8559</td>
+<td style="text-align: right;">2.5652</td>
+<td style="text-align: right;">1.8559</td>
+<td style="text-align: right;">0.2269</td>
+<td style="text-align: right;">2.4796</td>
+<td style="text-align: right;">2.5652</td>
+<td style="text-align: right;">2.4016</td>
+<td style="text-align: right;">0.3650</td>
+<td style="text-align: right;">6358</td>
+<td style="text-align: right;">1.6081</td>
+<td style="text-align: right;">0.2317</td>
+<td style="text-align: right;">-1.6357</td>
+<td style="text-align: right;">0.4270</td>
+<td style="text-align: right;">0.2332</td>
+<td style="text-align: right;">2.5652</td>
+<td style="text-align: right;">4.902</td>
+<td style="text-align: right;">2852.455</td>
+<td style="text-align: right;">1.8559</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">KixnRx0JwfvcHUq80WfM</td>
+<td style="text-align: right;">1745264853</td>
+<td style="text-align: left;">Multi Rebound</td>
+<td style="text-align: left;">r4fhrkPdYlLxYQxEeM78</td>
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+<td style="text-align: right;">922.480</td>
+<td style="text-align: right;">0.3825</td>
+<td style="text-align: right;">2.720</td>
+<td style="text-align: right;">0.3721</td>
+<td style="text-align: right;">1.5624</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">1.6290</td>
+<td style="text-align: right;">1.7383</td>
+<td style="text-align: right;">2.3107</td>
+<td style="text-align: right;">-1.0244</td>
+<td style="text-align: right;">2.4826</td>
+<td style="text-align: right;">1.7383</td>
+<td style="text-align: right;">2.4826</td>
+<td style="text-align: right;">1.7383</td>
+<td style="text-align: right;">0.2473</td>
+<td style="text-align: right;">2.3776</td>
+<td style="text-align: right;">2.4826</td>
+<td style="text-align: right;">2.1778</td>
+<td style="text-align: right;">0.3493</td>
+<td style="text-align: right;">6739</td>
+<td style="text-align: right;">1.4294</td>
+<td style="text-align: right;">0.2350</td>
+<td style="text-align: right;">-14.8538</td>
+<td style="text-align: right;">0.3998</td>
+<td style="text-align: right;">0.2388</td>
+<td style="text-align: right;">2.4906</td>
+<td style="text-align: right;">5.867</td>
+<td style="text-align: right;">2837.017</td>
+<td style="text-align: right;">1.7383</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">z1nPzadnX2bcOWseAICU</td>
+<td style="text-align: right;">1745264888</td>
+<td style="text-align: left;">Multi Rebound</td>
+<td style="text-align: left;">r4fhrkPdYlLxYQxEeM78</td>
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+<td style="text-align: right;">920.864</td>
+<td style="text-align: right;">0.3891</td>
+<td style="text-align: right;">2.290</td>
+<td style="text-align: right;">0.3815</td>
+<td style="text-align: right;">1.6887</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">1.7455</td>
+<td style="text-align: right;">1.8072</td>
+<td style="text-align: right;">2.4677</td>
+<td style="text-align: right;">-2.0943</td>
+<td style="text-align: right;">2.5766</td>
+<td style="text-align: right;">1.8072</td>
+<td style="text-align: right;">2.5766</td>
+<td style="text-align: right;">1.8072</td>
+<td style="text-align: right;">0.2290</td>
+<td style="text-align: right;">2.5265</td>
+<td style="text-align: right;">2.5766</td>
+<td style="text-align: right;">2.3747</td>
+<td style="text-align: right;">0.3622</td>
+<td style="text-align: right;">6321</td>
+<td style="text-align: right;">1.5838</td>
+<td style="text-align: right;">0.2230</td>
+<td style="text-align: right;">6.7553</td>
+<td style="text-align: right;">0.4013</td>
+<td style="text-align: right;">0.2262</td>
+<td style="text-align: right;">2.5766</td>
+<td style="text-align: right;">5.431</td>
+<td style="text-align: right;">3021.427</td>
+<td style="text-align: right;">1.8072</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> SJ_cleaned (</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>peak_propuslive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>propulsive_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> SJ_cleaned <span class="kw">FROM</span> <span class="st">'SJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> SJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>5 records</caption>
+<colgroup>
+<col style="width: 1%">
+<col style="width: 0%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 1%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">id</th>
+<th style="text-align: right;">timestamp</th>
+<th style="text-align: left;">testType_name</th>
+<th style="text-align: left;">testType_canonicalId</th>
+<th style="text-align: left;">athlete_id</th>
+<th style="text-align: left;">athlete_name</th>
+<th style="text-align: right;">right_avg_propulsive_force_n</th>
+<th style="text-align: right;">relative_propulsive_net_impulse_n_s_kg</th>
+<th style="text-align: right;">propulsive_phase_s</th>
+<th style="text-align: right;">left_force_at_peak_propulsive_force_n</th>
+<th style="text-align: right;">jump_height_m</th>
+<th style="text-align: right;">relative_propulsive_impulse_n_s_kg</th>
+<th style="text-align: right;">landing_phase_s</th>
+<th style="text-align: right;">peak_relative_propulsive_power_w_kg</th>
+<th style="text-align: right;">landing_performance_index</th>
+<th style="text-align: right;">l_r_avg_propulsive_force_percent</th>
+<th style="text-align: right;">avg_relative_propulsive_force_percent</th>
+<th style="text-align: right;">left_avg_landing_force_n</th>
+<th style="text-align: right;">peak_propulsive_power_w</th>
+<th style="text-align: right;">peak_landing_force_n</th>
+<th style="text-align: right;">right_avg_landing_force_n</th>
+<th style="text-align: right;">avg_propulsive_force_n</th>
+<th style="text-align: right;">flight_time_s</th>
+<th style="text-align: right;">jump_momentum_kg_m_s</th>
+<th style="text-align: right;">landing_height_m</th>
+<th style="text-align: right;">time_to_takeoff_s</th>
+<th style="text-align: right;">avg_propulsive_velocity_m_s</th>
+<th style="text-align: right;">takeoff_velocity_m_s</th>
+<th style="text-align: right;">time_to_stabilization_ms</th>
+<th style="text-align: right;">avg_propulsive_power_w</th>
+<th style="text-align: right;">l_r_peak_propulsive_force_percent</th>
+<th style="text-align: right;">right_force_at_peak_propulsive_force_n</th>
+<th style="text-align: right;">relative_peak_landing_force_percent</th>
+<th style="text-align: right;">system_weight_n</th>
+<th style="text-align: right;">peak_relative_propulsive_force_percent</th>
+<th style="text-align: right;">peak_velocity_m_s</th>
+<th style="text-align: right;">l_r_avg_landing_force_percent</th>
+<th style="text-align: right;">landing_stiffness_n_m</th>
+<th style="text-align: right;">avg_relative_propulsive_power_w_kg</th>
+<th style="text-align: right;">right_force_at_peak_landing_force_n</th>
+<th style="text-align: right;">propulsive_net_impulse_n_s</th>
+<th style="text-align: right;">l_r_peak_landing_force_percent</th>
+<th style="text-align: right;">left_avg_propulsive_force_n</th>
+<th style="text-align: right;">avg_landing_force_n</th>
+<th style="text-align: right;">peak_propuslive_force_n</th>
+<th style="text-align: right;">left_force_at_peak_landing_force_n</th>
+<th style="text-align: right;">l_r_propulsive_impulse_index_percent</th>
+<th style="text-align: right;">l_r_landing_impulse_index_percent</th>
+<th style="text-align: right;">propulsive_impulse_n_s</th>
+<th style="text-align: right;">propulsive_rfd_n_s</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">xC219Df7u4VFOIO9Jlpl</td>
+<td style="text-align: right;">1745252706</td>
+<td style="text-align: left;">Squat Jump</td>
+<td style="text-align: left;">QEG7m7DhYsD6BrcQ8pic</td>
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+<td style="text-align: right;">759.5465</td>
+<td style="text-align: right;">2.4896</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">1152</td>
+<td style="text-align: right;">0.3139</td>
+<td style="text-align: right;">5.7563</td>
+<td style="text-align: right;">0.127</td>
+<td style="text-align: right;">51.9602</td>
+<td style="text-align: right;">2.5523</td>
+<td style="text-align: right;">1.7923</td>
+<td style="text-align: right;">176.0649</td>
+<td style="text-align: right;">689.7641</td>
+<td style="text-align: right;">4653.374</td>
+<td style="text-align: right;">6465</td>
+<td style="text-align: right;">537.5875</td>
+<td style="text-align: right;">1546.817</td>
+<td style="text-align: right;">0.512</td>
+<td style="text-align: right;">222.2799</td>
+<td style="text-align: right;">0.3241</td>
+<td style="text-align: right;">0.333</td>
+<td style="text-align: right;">1.0829</td>
+<td style="text-align: right;">2.4820</td>
+<td style="text-align: right;">640</td>
+<td style="text-align: right;">1783.003</td>
+<td style="text-align: right;">3.5506</td>
+<td style="text-align: right;">1073</td>
+<td style="text-align: right;">735.8724</td>
+<td style="text-align: right;">878.549</td>
+<td style="text-align: right;">253.2585</td>
+<td style="text-align: right;">2.6190</td>
+<td style="text-align: right;">12.3988</td>
+<td style="text-align: right;">-13316.504</td>
+<td style="text-align: right;">19.9093</td>
+<td style="text-align: right;">2677</td>
+<td style="text-align: right;">222.9587</td>
+<td style="text-align: right;">17.1848</td>
+<td style="text-align: right;">787.2703</td>
+<td style="text-align: right;">1227.352</td>
+<td style="text-align: right;">2225</td>
+<td style="text-align: right;">3788</td>
+<td style="text-align: right;">3.5057</td>
+<td style="text-align: right;">22.0827</td>
+<td style="text-align: right;">515.5155</td>
+<td style="text-align: right;">5831.858</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OPRcuPwZPuBqDAEN4wQN</td>
+<td style="text-align: right;">1745252722</td>
+<td style="text-align: left;">Squat Jump</td>
+<td style="text-align: left;">QEG7m7DhYsD6BrcQ8pic</td>
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+<td style="text-align: right;">757.0029</td>
+<td style="text-align: right;">2.5736</td>
+<td style="text-align: right;">0.344</td>
+<td style="text-align: right;">1145</td>
+<td style="text-align: right;">0.3358</td>
+<td style="text-align: right;">5.9482</td>
+<td style="text-align: right;">0.131</td>
+<td style="text-align: right;">52.8698</td>
+<td style="text-align: right;">2.5182</td>
+<td style="text-align: right;">1.6644</td>
+<td style="text-align: right;">176.1231</td>
+<td style="text-align: right;">577.0016</td>
+<td style="text-align: right;">4711.284</td>
+<td style="text-align: right;">6273</td>
+<td style="text-align: right;">668.3381</td>
+<td style="text-align: right;">1539.631</td>
+<td style="text-align: right;">0.523</td>
+<td style="text-align: right;">228.7373</td>
+<td style="text-align: right;">0.3299</td>
+<td style="text-align: right;">0.344</td>
+<td style="text-align: right;">1.0873</td>
+<td style="text-align: right;">2.5669</td>
+<td style="text-align: right;">630</td>
+<td style="text-align: right;">1807.114</td>
+<td style="text-align: right;">4.2805</td>
+<td style="text-align: right;">1051</td>
+<td style="text-align: right;">717.5876</td>
+<td style="text-align: right;">874.179</td>
+<td style="text-align: right;">251.2071</td>
+<td style="text-align: right;">2.6827</td>
+<td style="text-align: right;">-7.3343</td>
+<td style="text-align: right;">-7562.245</td>
+<td style="text-align: right;">20.2794</td>
+<td style="text-align: right;">2621</td>
+<td style="text-align: right;">229.3369</td>
+<td style="text-align: right;">16.4355</td>
+<td style="text-align: right;">782.6279</td>
+<td style="text-align: right;">1245.340</td>
+<td style="text-align: right;">2196</td>
+<td style="text-align: right;">3652</td>
+<td style="text-align: right;">3.2616</td>
+<td style="text-align: right;">-13.6497</td>
+<td style="text-align: right;">530.0545</td>
+<td style="text-align: right;">5295.082</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">uNGPiAK6FecoLmn5NLKi</td>
+<td style="text-align: right;">1745252740</td>
+<td style="text-align: left;">Squat Jump</td>
+<td style="text-align: left;">QEG7m7DhYsD6BrcQ8pic</td>
+<td style="text-align: left;">SHIzyJ0tT04rsOiQVIEn</td>
+<td style="text-align: left;">David Clarke</td>
+<td style="text-align: right;">739.0000</td>
+<td style="text-align: right;">2.4909</td>
+<td style="text-align: right;">0.335</td>
+<td style="text-align: right;">1127</td>
+<td style="text-align: right;">0.3155</td>
+<td style="text-align: right;">5.7773</td>
+<td style="text-align: right;">0.141</td>
+<td style="text-align: right;">50.6401</td>
+<td style="text-align: right;">2.3278</td>
+<td style="text-align: right;">3.9757</td>
+<td style="text-align: right;">175.6537</td>
+<td style="text-align: right;">489.0593</td>
+<td style="text-align: right;">4523.365</td>
+<td style="text-align: right;">5631</td>
+<td style="text-align: right;">636.7484</td>
+<td style="text-align: right;">1539.194</td>
+<td style="text-align: right;">0.514</td>
+<td style="text-align: right;">222.1994</td>
+<td style="text-align: right;">0.3282</td>
+<td style="text-align: right;">0.335</td>
+<td style="text-align: right;">1.0872</td>
+<td style="text-align: right;">2.4876</td>
+<td style="text-align: right;">910</td>
+<td style="text-align: right;">1780.845</td>
+<td style="text-align: right;">4.3036</td>
+<td style="text-align: right;">1034</td>
+<td style="text-align: right;">642.6131</td>
+<td style="text-align: right;">876.266</td>
+<td style="text-align: right;">246.6146</td>
+<td style="text-align: right;">2.5986</td>
+<td style="text-align: right;">-13.1185</td>
+<td style="text-align: right;">-11004.365</td>
+<td style="text-align: right;">19.9370</td>
+<td style="text-align: right;">2695</td>
+<td style="text-align: right;">222.5004</td>
+<td style="text-align: right;">4.2799</td>
+<td style="text-align: right;">800.1940</td>
+<td style="text-align: right;">1125.808</td>
+<td style="text-align: right;">2161</td>
+<td style="text-align: right;">2936</td>
+<td style="text-align: right;">7.6337</td>
+<td style="text-align: right;">-23.2008</td>
+<td style="text-align: right;">516.0495</td>
+<td style="text-align: right;">5330.472</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LrP3Opfipa26wTlQCBr4</td>
+<td style="text-align: right;">1745264771</td>
+<td style="text-align: left;">Squat Jump</td>
+<td style="text-align: left;">QEG7m7DhYsD6BrcQ8pic</td>
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+<td style="text-align: right;">815.1124</td>
+<td style="text-align: right;">2.6721</td>
+<td style="text-align: right;">0.347</td>
+<td style="text-align: right;">1052</td>
+<td style="text-align: right;">0.3625</td>
+<td style="text-align: right;">6.0762</td>
+<td style="text-align: right;">0.210</td>
+<td style="text-align: right;">52.8552</td>
+<td style="text-align: right;">2.3104</td>
+<td style="text-align: right;">1.0391</td>
+<td style="text-align: right;">178.3586</td>
+<td style="text-align: right;">483.4730</td>
+<td style="text-align: right;">4976.327</td>
+<td style="text-align: right;">6637</td>
+<td style="text-align: right;">579.6865</td>
+<td style="text-align: right;">1647.343</td>
+<td style="text-align: right;">0.589</td>
+<td style="text-align: right;">251.0937</td>
+<td style="text-align: right;">0.4851</td>
+<td style="text-align: right;">0.347</td>
+<td style="text-align: right;">1.3305</td>
+<td style="text-align: right;">2.6669</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">2197.275</td>
+<td style="text-align: right;">0.7180</td>
+<td style="text-align: right;">1037</td>
+<td style="text-align: right;">718.5910</td>
+<td style="text-align: right;">923.613</td>
+<td style="text-align: right;">226.1770</td>
+<td style="text-align: right;">2.7964</td>
+<td style="text-align: right;">-9.0498</td>
+<td style="text-align: right;">-4832.189</td>
+<td style="text-align: right;">23.3380</td>
+<td style="text-align: right;">3425</td>
+<td style="text-align: right;">251.5793</td>
+<td style="text-align: right;">-3.2093</td>
+<td style="text-align: right;">832.2305</td>
+<td style="text-align: right;">1063.159</td>
+<td style="text-align: right;">2089</td>
+<td style="text-align: right;">3212</td>
+<td style="text-align: right;">2.0584</td>
+<td style="text-align: right;">-16.5930</td>
+<td style="text-align: right;">572.0730</td>
+<td style="text-align: right;">4372.549</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">47LBGesj4QY26glorO7E</td>
+<td style="text-align: right;">1745264799</td>
+<td style="text-align: left;">Squat Jump</td>
+<td style="text-align: left;">QEG7m7DhYsD6BrcQ8pic</td>
+<td style="text-align: left;">L7pwuQp3MQ1AfEoVBgDU</td>
+<td style="text-align: left;">George Zaharias</td>
+<td style="text-align: right;">814.7346</td>
+<td style="text-align: right;">2.6329</td>
+<td style="text-align: right;">0.324</td>
+<td style="text-align: right;">1187</td>
+<td style="text-align: right;">0.3559</td>
+<td style="text-align: right;">5.8113</td>
+<td style="text-align: right;">0.194</td>
+<td style="text-align: right;">55.3675</td>
+<td style="text-align: right;">2.4539</td>
+<td style="text-align: right;">3.5338</td>
+<td style="text-align: right;">182.6882</td>
+<td style="text-align: right;">591.7824</td>
+<td style="text-align: right;">5218.511</td>
+<td style="text-align: right;">6265</td>
+<td style="text-align: right;">646.0802</td>
+<td style="text-align: right;">1689.160</td>
+<td style="text-align: right;">0.584</td>
+<td style="text-align: right;">249.0404</td>
+<td style="text-align: right;">0.4760</td>
+<td style="text-align: right;">0.324</td>
+<td style="text-align: right;">1.2618</td>
+<td style="text-align: right;">2.6423</td>
+<td style="text-align: right;">910</td>
+<td style="text-align: right;">2185.830</td>
+<td style="text-align: right;">2.4601</td>
+<td style="text-align: right;">1130</td>
+<td style="text-align: right;">677.5800</td>
+<td style="text-align: right;">924.614</td>
+<td style="text-align: right;">250.5911</td>
+<td style="text-align: right;">2.7657</td>
+<td style="text-align: right;">-4.3864</td>
+<td style="text-align: right;">-5162.390</td>
+<td style="text-align: right;">23.1913</td>
+<td style="text-align: right;">3499</td>
+<td style="text-align: right;">248.1541</td>
+<td style="text-align: right;">-11.6999</td>
+<td style="text-align: right;">874.4259</td>
+<td style="text-align: right;">1237.863</td>
+<td style="text-align: right;">2317</td>
+<td style="text-align: right;">2766</td>
+<td style="text-align: right;">6.8302</td>
+<td style="text-align: right;">-8.4069</td>
+<td style="text-align: right;">547.7290</td>
+<td style="text-align: right;">5937.778</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="query-1" class="level2">
+<h2 class="anchored" data-anchor-id="query-1">Query 1:</h2>
+<p>This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance to.</p>
+<div class="cell" data-output.var="Left_Right_combined">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.athlete_name, a.athlete_id, sj.jump_height,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_propulsive_force_n, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_landing_force_n, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_landing_force_n, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_propulsive_force_n,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_landing_force_n,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_landing_force_n,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_propulsive_force_n,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_propulsive_force_n, </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_landing_force_n, </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_propulsive_force_n, </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_landing_force_n, </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_propulsive_force_n,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_landing_force_n,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_landing_force_n,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_propulsive_force_n</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> athletes <span class="kw">AS</span> a</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> (</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> cmj_right_avg_propulsive_force_n, </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> cmj_right_avg_landing_force_n, </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_landing_force_n, </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> cmj_left_avg_propulsive_force_n, </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> cmj_left_avg_landing_force_n,</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_propulsive_force_n,</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_landing_force_n</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> CMJ_cleaned</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name)</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> cmj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> cmj.athlete_id</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span>(</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> sj_right_avg_propulsive_force_n, </span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> sj_right_avg_landing_force_n, </span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_right_force_at_peak_landing_force_n, </span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> sj_left_avg_propulsive_force_n, </span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> sj_left_avg_landing_force_n,</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_left_force_at_peak_propulsive_force_n,</span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_left_force_at_peak_landing_force_n,</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    jump_height_m <span class="kw">AS</span> jump_height</span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> SJ_cleaned</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name, jump_height)</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> sj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> sj.athlete_id</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> cmj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">AND</span> sj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Left_Right_combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     athlete_name           athlete_id jump_height
+1   Zaiden Ocampo YqlkR44ElDRiHJYlZgkK      0.3035
+2    David Clarke SHIzyJ0tT04rsOiQVIEn      0.3129
+3 George Zaharias L7pwuQp3MQ1AfEoVBgDU      0.3559
+4 Ethan Reyzelman MW9hAu2eCeq1c0Nsa6CR      0.3383
+5   Cole Flickner hF6mtoYNHjdZ3xEgTr0C      0.4046
+6     Brody Costa NBswtip2tqVCChR4aZIZ      0.3292
+  cmj_right_avg_propulsive_force_n cmj_right_avg_landing_force_n
+1                         661.0384                      449.4502
+2                         871.7930                      585.3671
+3                         923.5375                      611.3595
+4                         770.3765                      382.7006
+5                         603.6647                      333.9268
+6                         550.1763                      357.6213
+  cmj_right_force_at_peak_propulsive_force_n
+1                                   851.3309
+2                                  1071.8514
+3                                  1202.0000
+4                                   933.4444
+5                                   748.6667
+6                                   717.5000
+  cmj_right_force_at_peak_landing_force_n sj_right_avg_propulsive_force_n
+1                                1568.314                        593.8279
+2                                2565.311                        761.3287
+3                                3206.333                        814.7346
+4                                3501.778                        681.0079
+5                                1944.333                        597.5367
+6                                1071.383                        549.0753
+  sj_right_avg_landing_force_n sj_right_force_at_peak_landing_force_n
+1                     489.8252                                   1431
+2                     625.3576                                   2230
+3                     646.0802                                   3499
+4                     252.2957                                   2324
+5                     404.2115                                   1850
+6                     369.0726                                   1846
+  sj_right_force_at_peak_propulsive_force_n cmj_left_avg_propulsive_force_n
+1                                       687                        651.0238
+2                                      1077                        933.1590
+3                                      1130                        975.2465
+4                                       866                        786.7720
+5                                       802                        645.1676
+6                                       787                        559.3053
+  cmj_left_avg_landing_force_n cmj_left_force_at_peak_propulsive_force_n
+1                     427.8263                                  870.1655
+2                     639.5388                                 1154.9932
+3                     610.9929                                 1334.0000
+4                     410.7873                                  937.0556
+5                     513.1388                                  798.5000
+6                     346.4293                                  721.3333
+  cmj_left_force_at_peak_landing_force_n sj_left_avg_propulsive_force_n
+1                               1490.073                       581.2140
+2                               3534.777                       769.9635
+3                               3785.667                       874.4259
+4                               3601.222                       684.1050
+5                               2366.333                       620.0293
+6                                943.800                       534.0000
+  sj_left_avg_landing_force_n sj_left_force_at_peak_landing_force_n
+1                    444.9378                                   933
+2                    637.1045                                  3059
+3                    591.7824                                  2766
+4                    444.7522                                  2439
+5                    499.4379                                  1535
+6                    438.7709                                  2085
+  sj_left_force_at_peak_propulsive_force_n
+1                                      738
+2                                     1196
+3                                     1187
+4                                      842
+5                                      791
+6                                      807</code></pre>
+</div>
+</div>
+</section>
+<section id="data-visualization-comparing-left-and-right-leg-propulsive-force" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-comparing-left-and-right-leg-propulsive-force">Data Visualization: Comparing Left and Right leg propulsive force</h2>
+<p>The first visualization shows the average propulsive force of the right leg of an athlete compared to the left leg. The second visualization shows the peak propulsive force of the right leg compared tot he left leg. As expected there is a strong correlation between the left and right leg for most athletes. Interestingly, there are several athletes who have both a great left and right leg propulsion, and they sit close tot he top on both, but for some reason they have a lower jump height, which doesn’t make too much sense, as you would expect more force to equal more jump height. However, this doesn’t take into consideration weight of the athlete when they are jumping, so heavier athletes may produce more force without jumping as high.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sql_project_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sql_project_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="section-2" class="level3">
+<h3 class="anchored" data-anchor-id="section-2">—————————————————————————</h3>
+</section>
+</section>
+</section>
+<section id="sources" class="level1">
+<h1>Sources</h1>
+<ul>
+<li><p>https://www.hawkindynamics.com/hawkin-metric-database</p></li>
+<li><p>https://www.hawkindynamics.com/blog/select-your-force-time-metrics-with-this-simple-system</p></li>
+<li><p>https://www.sportsmith.co/articles/selecting-the-right-metrics-for-vertical-jump-testing/</p></li>
+<li><p>Google Gemini</p></li>
+</ul>
+<section id="section-3" class="level3">
+<h3 class="anchored" data-anchor-id="section-3">—————————————————————————</h3>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

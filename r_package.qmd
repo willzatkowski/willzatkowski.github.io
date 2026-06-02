@@ -5,6 +5,7 @@ title: "R Package"
 ## Github Repo
 
 [Github Repo](https://github.com/ADC-405-S26/baseballvizR)
+[Package Website](https://adc-405-s26.github.io/baseballvizR/)
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(

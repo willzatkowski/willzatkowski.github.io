@@ -17,6 +17,8 @@ website:
             text: Text-Analysis Project
           - href: r_package.qmd
             text: R Package
+          - href: poster_project.qmd
+            text: Poster Project
       
 
 format:

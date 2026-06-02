@@ -12,6 +12,6 @@ about:
       target: _blank
 ---
 
-This is a Quarto website.
+Welcome! My name is Will Zatkowski.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+

@@ -1,4 +1,11 @@
 ---
 title: "Poster Project"
 ---
+
+## Github Repo
+
+[Github Repo](https://github.com/ADC-405-S26/Project_5_PaperPoster_Team_10)
+
+## Poster 
+
 just add the poster

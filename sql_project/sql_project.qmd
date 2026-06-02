@@ -30,9 +30,9 @@ library(duckdb)
 #| warning: false
 #| include: false
 #Loading - hawkinsr query for last 365 days of tests in KPI baseball players
-CMJ_raw_data <- read.csv("CMJ_Data.csv") 
-MR_raw_data <- read.csv("MultiRebound_Data.csv")
-SJ_raw_data <- read.csv("SJ_Data.csv")
+CMJ_raw_data <- read.csv("CMJ_Data (1).csv") 
+MR_raw_data <- read.csv("MultiRebound_Data (1).csv")
+SJ_raw_data <- read.csv("SJ_Data (1).csv")
 
 #Master athlete name / id file
 athletes <- CMJ_raw_data %>%
@@ -312,6 +312,7 @@ SELECT * FROM SJ_cleaned LIMIT 5;
 This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance to.
 
 ```{sql connection=con_FP}
+--| output.var: "Left_Right_combined"
 
 SELECT a.athlete_name, a.athlete_id, sj.jump_height,
 cmj.cmj_right_avg_propulsive_force_n, 
