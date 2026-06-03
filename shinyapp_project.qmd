@@ -4,7 +4,7 @@ title: "Shinyapp Project"
 
 ## Github Project Repo
 
-[Github Repo](https://github.com/willzatkowski/DSP_205_willzatkowski_Project_3/tree/main)
+[Github Repo](https://019e8eea-002f-eb91-0f49-0354590bcc81.share.connect.posit.cloud)
 
 ## Introduction
 
@@ -12,7 +12,7 @@ This was a Shiny App project completed in another class. I created a shiny app t
 
 ## Interactive Shiny App
 
-[Open the app in a separate tab](https://fb4811181ed040d2bd9e5ce92172ea02.app.posit.cloud/p/e23adb30/)
+[Open the app in a separate tab](https://019e8eea-002f-eb91-0f49-0354590bcc81.share.connect.posit.cloud)
 
 It may take a few seconds for the scatterplot to appear as there is a lot of data being processed.
 
