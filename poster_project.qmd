@@ -1,5 +1,8 @@
 ---
 title: "Poster Project"
+format:
+  html:
+    theme: darkly
 ---
 
 ## Github Project Repo

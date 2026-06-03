@@ -1,5 +1,8 @@
 ---
 title: "R Package"
+format:
+  html:
+    theme: darkly
 ---
 
 ## Github Project Repo
