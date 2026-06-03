@@ -4,7 +4,7 @@ title: "SQL Project"
 
 ## Github Project Repo
 
-[Github Repo](https://github.com/ADC-405-S26/Project_2_SQL_Team_7)
+[Github Repo](https://github.com/willzatkowski/Project_2_SQL_Team_7/tree/main)
 
 ## Introduction
 

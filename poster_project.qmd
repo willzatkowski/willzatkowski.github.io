@@ -7,7 +7,7 @@ format:
 
 ## Github Project Repo
 
-[Github Repo](https://github.com/ADC-405-S26/Project_5_PaperPoster_Team_10)
+[Github Repo](https://github.com/willzatkowski/Project_5_PaperPoster_Team_10/tree/main)
 
 ## Introduction 
 

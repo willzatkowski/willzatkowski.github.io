@@ -4,7 +4,7 @@ title: "Shinyapp Project"
 
 ## Github Project Repo
 
-[Github Repo](https://github.com/DSP-205-F24/willzatkowski_Project_3)
+[Github Repo](https://github.com/willzatkowski/DSP_205_willzatkowski_Project_3/tree/main)
 
 ## Introduction
 
