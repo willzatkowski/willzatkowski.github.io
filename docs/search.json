@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "Will Zatkowski",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Welcome! My name is Will Zatkowski. I go to Lawrence University where I am pursuing a Bachelors in Economics with a Minor in Statistics and Data Science. I am a member of the Lawrence University Investing Club as well as a former member of the Lawrence University Baseball team.\nI am from Clarksville Maryland, and as I am a recently retired collegiate athlete, I now enjoy golfing for my exercise."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site"
+    "text": "I will be graduating with a Major in Economics and a Minor in Data Science. I wanted to pursue economics because it gives you the foundation for how markets work and what drives them. I wanted to minor in data science because it teaches you how to work with data, whether its understanding it, manipulating it, or trying to visualize it. These are good skills to have no matter which field I end up in."
   },
   {
     "objectID": "text_analysis_project.html",
@@ -285,5 +285,96 @@
     "title": "SQL Project",
     "section": "Querying the Data:",
     "text": "Querying the Data:\nThis query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance.\n\nhead(Left_Right_combined)\n\n     athlete_name           athlete_id jump_height\n1   Zaiden Ocampo YqlkR44ElDRiHJYlZgkK      0.3035\n2    David Clarke SHIzyJ0tT04rsOiQVIEn      0.3129\n3 George Zaharias L7pwuQp3MQ1AfEoVBgDU      0.3559\n4 Ethan Reyzelman MW9hAu2eCeq1c0Nsa6CR      0.3383\n5   Cole Flickner hF6mtoYNHjdZ3xEgTr0C      0.4046\n6     Brody Costa NBswtip2tqVCChR4aZIZ      0.3292\n  cmj_right_avg_propulsive_force_n cmj_right_avg_landing_force_n\n1                         661.0384                      449.4502\n2                         871.7930                      585.3671\n3                         923.5375                      611.3595\n4                         770.3765                      382.7006\n5                         603.6647                      333.9268\n6                         550.1763                      357.6213\n  cmj_right_force_at_peak_propulsive_force_n\n1                                   851.3309\n2                                  1071.8514\n3                                  1202.0000\n4                                   933.4444\n5                                   748.6667\n6                                   717.5000\n  cmj_right_force_at_peak_landing_force_n sj_right_avg_propulsive_force_n\n1                                1568.314                        593.8279\n2                                2565.311                        761.3287\n3                                3206.333                        814.7346\n4                                3501.778                        681.0079\n5                                1944.333                        597.5367\n6                                1071.383                        549.0753\n  sj_right_avg_landing_force_n sj_right_force_at_peak_landing_force_n\n1                     489.8252                                   1431\n2                     625.3576                                   2230\n3                     646.0802                                   3499\n4                     252.2957                                   2324\n5                     404.2115                                   1850\n6                     369.0726                                   1846\n  sj_right_force_at_peak_propulsive_force_n cmj_left_avg_propulsive_force_n\n1                                       687                        651.0238\n2                                      1077                        933.1590\n3                                      1130                        975.2465\n4                                       866                        786.7720\n5                                       802                        645.1676\n6                                       787                        559.3053\n  cmj_left_avg_landing_force_n cmj_left_force_at_peak_propulsive_force_n\n1                     427.8263                                  870.1655\n2                     639.5388                                 1154.9932\n3                     610.9929                                 1334.0000\n4                     410.7873                                  937.0556\n5                     513.1388                                  798.5000\n6                     346.4293                                  721.3333\n  cmj_left_force_at_peak_landing_force_n sj_left_avg_propulsive_force_n\n1                               1490.073                       581.2140\n2                               3534.777                       769.9635\n3                               3785.667                       874.4259\n4                               3601.222                       684.1050\n5                               2366.333                       620.0293\n6                                943.800                       534.0000\n  sj_left_avg_landing_force_n sj_left_force_at_peak_landing_force_n\n1                    444.9378                                   933\n2                    637.1045                                  3059\n3                    591.7824                                  2766\n4                    444.7522                                  2439\n5                    499.4379                                  1535\n6                    438.7709                                  2085\n  sj_left_force_at_peak_propulsive_force_n\n1                                      738\n2                                     1196\n3                                     1187\n4                                      842\n5                                      791\n6                                      807"
+  },
+  {
+    "objectID": "text_analysis_project.html#introduction",
+    "href": "text_analysis_project.html#introduction",
+    "title": "Text-Analysis Project",
+    "section": "Introduction",
+    "text": "Introduction\nThis project was focused on using textual analysis to analyze a large text. For this project myself and Conner Robertson performed a textual analysis of the four gospels found in the New Testament of the Bible."
+  },
+  {
+    "objectID": "text_analysis_project.html#background",
+    "href": "text_analysis_project.html#background",
+    "title": "Text-Analysis Project",
+    "section": "Background",
+    "text": "Background\nReligious texts have shaped history not only through what they say, but also through how they are written. The four Gospels in the Bible are often read together because they each tell the story of Jesus from four different perspectives. While they overlap in many places, they also differ in structure, emphasis, and wording. These differences make the Gospels a useful case for text analysis, where we can compare not just what each Gospel says, but how each one says it. In this blog post, we will use computational tools to explore whether the Gospels’ language patterns reflect their historical and literary relationships. To be more specific, our primary goal is to identify which words and themes are most distinctive from one Gospel to the next, and understand the linguistic differences tied to the unique writing styles of each author.\nFor some brief context, historians generally agree that Mark was the first gospel to be written, around 70 A.D. Matthew and Luke were written between 80-85 A.D, and are generally believed to have used Mark as a source. These three are known as the synoptic gospels, a term derived from the idea of being “seen together. There are many similarities between these three writings, as they share many of the same stories, structures and, as we see, even wording patterns. Our cluster analysis attempts to quantitatively demonstrate this well-understood belief.\nApart from these three, there is John. His gospel is believed to have been written last, around 90 A.D. There are many differences between John and the synoptic gospels, for instance, there are several stories told in John that do not appear in the other three, and parts of the chronology are different."
+  },
+  {
+    "objectID": "poster_project.html#github-project-repo",
+    "href": "poster_project.html#github-project-repo",
+    "title": "Poster Project",
+    "section": "",
+    "text": "Github Repo"
+  },
+  {
+    "objectID": "poster_project.html#introduction",
+    "href": "poster_project.html#introduction",
+    "title": "Poster Project",
+    "section": "Introduction",
+    "text": "Introduction\nThis project was to read a professional paper about a topic within data science, and then create a poster with all of the relevant information from the paper. Myself and Brett Hartlaub read “The Elements of Graphing Data Well’ by Steve Figard, which was written as a guide to properly create effective visualizations for data."
+  },
+  {
+    "objectID": "about.html#background",
+    "href": "about.html#background",
+    "title": "About",
+    "section": "",
+    "text": "use this photo : hr_photo_website_project.png"
+  },
+  {
+    "objectID": "about.html#baseball-career",
+    "href": "about.html#baseball-career",
+    "title": "About",
+    "section": "Baseball Career",
+    "text": "Baseball Career\nI have been playing baseball since the age of 7. It’s been a huge part of my life up until recently when i retired from the sport. I played travel ball throughout my childhood. I played 3 years of Varsity Baseball in High school and 4 years of collegiate ball at Lawrence University.\nMy position of choice has always been catcher because it requires both a sharp mind and athleticism. The catcher is the field general who takes control of the game and strategizes with his pitcher to give his team an edge."
+  },
+  {
+    "objectID": "about.html#hobbies",
+    "href": "about.html#hobbies",
+    "title": "About",
+    "section": "Hobbies",
+    "text": "Hobbies\nNow that I am a retired collegiate athlete, I have a lot more time on my hands. I have picked up golf as a hobby to help stay in shape, but also to feed my competitive drive. I have a lot of fun competing with my brother, dad, and grandfather who all regularly trounce me 😅.\nI also do investing as a hobby where I spend a lot of time researching different stocks and picking the ones I like best. This was something I first started doing with my grandfather, and overtime he taught me how the market works and what to look for."
+  },
+  {
+    "objectID": "shinyapp_project.html",
+    "href": "shinyapp_project.html",
+    "title": "Shinyapp Project",
+    "section": "",
+    "text": "Github Repo"
+  },
+  {
+    "objectID": "shinyapp_project.html#introduction",
+    "href": "shinyapp_project.html#introduction",
+    "title": "Shinyapp Project",
+    "section": "Introduction",
+    "text": "Introduction\nThis was a Shiny App project completed in another class. I created a shiny app that would webscrape Baseball player data from the website Baseball-Reference based on the inputs of the user. Then using the R package gganimate it created a moving plot showing the trend in the league wide data, split by division, over the span of 10 years."
+  },
+  {
+    "objectID": "shinyapp_project.html#interactive-shiny-app",
+    "href": "shinyapp_project.html#interactive-shiny-app",
+    "title": "Shinyapp Project",
+    "section": "Interactive Shiny App",
+    "text": "Interactive Shiny App\nOpen the app in a separate tab\nIt may take a few seconds for the scatterplot to appear as there is a lot of data being processed."
+  },
+  {
+    "objectID": "shinyapp_project.html#github-project-repo",
+    "href": "shinyapp_project.html#github-project-repo",
+    "title": "Shinyapp Project",
+    "section": "",
+    "text": "Github Repo"
+  },
+  {
+    "objectID": "about.html#minor-in-data-science",
+    "href": "about.html#minor-in-data-science",
+    "title": "About",
+    "section": "Minor In Data Science",
+    "text": "Minor In Data Science"
+  },
+  {
+    "objectID": "about.html#economics-and-data-science",
+    "href": "about.html#economics-and-data-science",
+    "title": "About",
+    "section": "",
+    "text": "I will be graduating with a Major in Economics and a Minor in Data Science. I wanted to pursue economics because it gives you the foundation for how markets work and what drives them. I wanted to minor in data science because it teaches you how to work with data, whether its understanding it, manipulating it, or trying to visualize it. These are good skills to have no matter which field I end up in."
   }
 ]

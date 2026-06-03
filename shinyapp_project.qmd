@@ -1,0 +1,24 @@
+---
+title: "Shinyapp Project"
+---
+
+## Github Project Repo
+
+[Github Repo](https://github.com/DSP-205-F24/willzatkowski_Project_3)
+
+## Introduction
+
+This was a Shiny App project completed in another class. I created a shiny app that would webscrape Baseball player data from the website [Baseball-Reference](https://www.baseball-reference.com/) based on the inputs of the user. Then using the R package `gganimate` it created a moving plot showing the trend in the league wide data, split by division, over the span of 10 years.
+
+## Interactive Shiny App
+
+[Open the app in a separate tab](https://fb4811181ed040d2bd9e5ce92172ea02.app.posit.cloud/p/05dea311/)
+
+It may take a few seconds for the scatterplot to appear as there is a lot of data being processed.
+
+<iframe
+  src="https://fb4811181ed040d2bd9e5ce92172ea02.app.posit.cloud/p/05dea311/"
+  width="100%"
+  height="900"
+  style="border:none;">
+</iframe>

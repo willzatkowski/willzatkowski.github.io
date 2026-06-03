@@ -19,12 +19,14 @@ website:
             text: R Package
           - href: poster_project.qmd
             text: Poster Project
+          - href: shinyapp_project.qmd
+            text: Shiny App Project
       
 
 format:
   html:
     theme:
-      - cosmo
+      - darkly
       - brand
     css: styles.css
     toc: true

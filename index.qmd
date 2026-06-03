@@ -1,17 +1,24 @@
 ---
 title: "Will Zatkowski"
+image: headshot_project.png
 toc: false
 about: 
   template: jolla
+  image-shape: round
+  image-width: 17em
   links:
     - text: LinkedIn
-      href: www.linkedin.com/in/william-zatkowski-259096341
+      icon: linkedin
+      href: https://www.linkedin.com/in/william-zatkowski
       target: _blank
     - text: GitHub
+      icon: github
       href: https://github.com/willzatkowski
       target: _blank
 ---
 
-Welcome! My name is Will Zatkowski.
+Welcome! My name is Will Zatkowski. I go to Lawrence University where I am pursuing a Bachelors in Economics with a Minor in Statistics and Data Science. I am a member of the Lawrence University Investing Club as well as a former member of the Lawrence University Baseball team.
 
+I am from Clarksville Maryland, and as I am a recently retired collegiate athlete, I now enjoy golfing for my exercise. 
 
+add the link to github pages in github, maybe add more to the about me section, then make sure it is fully published and that the link is working for the submission

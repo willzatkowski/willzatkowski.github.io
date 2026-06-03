@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Will Zatkowski</title>
+<title>Shinyapp Project – Will Zatkowski</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,6 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -72,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -90,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -135,38 +136,67 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#github-project-repo" id="toc-github-project-repo" class="nav-link active" data-scroll-target="#github-project-repo">Github Project Repo</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#interactive-shiny-app" id="toc-interactive-shiny-app" class="nav-link" data-scroll-target="#interactive-shiny-app">Interactive Shiny App</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="headshot_project.png" class="about-image
-  round " style="height: 17em; width: 17em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Will Zatkowski</h1>
+<h1 class="title">Shinyapp Project</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header><main class="content" id="quarto-document-content">
-<p>Welcome! My name is Will Zatkowski. I go to Lawrence University where I am pursuing a Bachelors in Economics with a Minor in Statistics and Data Science. I am a member of the Lawrence University Investing Club as well as a former member of the Lawrence University Baseball team.</p>
-<p>I am from Clarksville Maryland, and as I am a recently retired collegiate athlete, I now enjoy golfing for my exercise.</p>
+  
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/william-zatkowski" class="about-link" rel="" target="_blank">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/willzatkowski" class="about-link" rel="" target="_blank">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+</header>
+
+
+<section id="github-project-repo" class="level2">
+<h2 class="anchored" data-anchor-id="github-project-repo">Github Project Repo</h2>
+<p><a href="https://github.com/DSP-205-F24/willzatkowski_Project_3">Github Repo</a></p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This was a Shiny App project completed in another class. I created a shiny app that would webscrape Baseball player data from the website <a href="https://www.baseball-reference.com/">Baseball-Reference</a> based on the inputs of the user. Then using the R package <code>gganimate</code> it created a moving plot showing the trend in the league wide data, split by division, over the span of 10 years.</p>
+</section>
+<section id="interactive-shiny-app" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-shiny-app">Interactive Shiny App</h2>
+<p><a href="https://fb4811181ed040d2bd9e5ce92172ea02.app.posit.cloud/p/05dea311/">Open the app in a separate tab</a></p>
+<p>It may take a few seconds for the scatterplot to appear as there is a lot of data being processed.</p>
+<iframe src="https://fb4811181ed040d2bd9e5ce92172ea02.app.posit.cloud/p/05dea311/" width="100%" height="900" style="border:none;">
+</iframe>
+
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
