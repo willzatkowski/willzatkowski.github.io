@@ -18,6 +18,7 @@ These tables show the first few lines of the four datasets we combined into our 
 #| message: false
 #| warning: false
 #| include: false
+# pull libraries
 library(tidyverse)
 library(readr)
 library(knitr)
@@ -61,6 +62,7 @@ readr::write_csv(MR_clean_data, "MR_cleaned.csv")
 #| message: false
 #| warning: false
 #| include: false
+# create database
 con_FP <- DBI::dbConnect(duckdb::duckdb(), dbdir = "sql_project/Foce_PlateDB")
 ```
 
