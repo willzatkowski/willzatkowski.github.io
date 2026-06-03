@@ -2,10 +2,15 @@
 title: "R Package"
 ---
 
-## Github Repo
+## Github Project Repo
 
 [Github Repo](https://github.com/ADC-405-S26/baseballvizR)
+
 [Package Website](https://adc-405-s26.github.io/baseballvizR/)
+
+## Introduction
+
+This project was focused on developing a brand new R package. Being a collegiate Baseball player, and an avid fan, I decided to created a package with functions that display a hitters stats throughout a given time period.
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -14,7 +19,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Intro & Installation
+## Installation
 
 The `baseballvizR` package provides convenience functions for some common tasks. I wanted to make this package because baseball statistics are just numbers on a page and don't always tell the full story. With the functions in this package you can get a glimpse behind just the raw data and start to see trends. 
 

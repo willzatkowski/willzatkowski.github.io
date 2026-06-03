@@ -115,6 +115,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./r_package.html">
  <span class="dropdown-text">R Package</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./poster_project.html">
+ <span class="dropdown-text">Poster Project</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -134,12 +138,15 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#github-project-repo" id="toc-github-project-repo" class="nav-link active" data-scroll-target="#github-project-repo">Github Project Repo</a></li>
-  <li><a href="#introduction-background" id="toc-introduction-background" class="nav-link" data-scroll-target="#introduction-background">Introduction &amp; Background</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a></li>
   <li><a href="#data-explanation" id="toc-data-explanation" class="nav-link" data-scroll-target="#data-explanation">Data Explanation</a></li>
   <li><a href="#rolling-sentiment-analysis-of-each-gospel" id="toc-rolling-sentiment-analysis-of-each-gospel" class="nav-link" data-scroll-target="#rolling-sentiment-analysis-of-each-gospel">Rolling Sentiment Analysis of each Gospel</a></li>
   <li><a href="#exploring-distinctive-thematic-language-between-the-four-gospels" id="toc-exploring-distinctive-thematic-language-between-the-four-gospels" class="nav-link" data-scroll-target="#exploring-distinctive-thematic-language-between-the-four-gospels">Exploring Distinctive Thematic Language between the four Gospels</a></li>
   <li><a href="#using-stylo-r-package-to-measure-literary-style" id="toc-using-stylo-r-package-to-measure-literary-style" class="nav-link" data-scroll-target="#using-stylo-r-package-to-measure-literary-style">Using ‘stylo’ R Package to Measure Literary Style</a></li>
   <li><a href="#referencessources" id="toc-referencessources" class="nav-link" data-scroll-target="#referencessources">References/Sources</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -169,8 +176,11 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="github-project-repo">Github Project Repo</h2>
 <p><a href="https://github.com/ADC-405-S26/Project_3_TextAnalysis_Team_7">Github Repo</a></p>
 </section>
-<section id="introduction-background" class="level2">
-<h2 class="anchored" data-anchor-id="introduction-background">Introduction &amp; Background</h2>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This project was focused on using textual analysis to analyze a large text. For this project myself and Conner Robertson performed a textual analysis of the four gospels found in the New Testament of the Bible.</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
 <p>Religious texts have shaped history not only through what they say, but also through how they are written. The four Gospels in the Bible are often read together because they each tell the story of Jesus from four different perspectives. While they overlap in many places, they also differ in structure, emphasis, and wording. These differences make the Gospels a useful case for text analysis, where we can compare not just what each Gospel says, but how each one says it. In this blog post, we will use computational tools to explore whether the Gospels’ language patterns reflect their historical and literary relationships. To be more specific, our primary goal is to identify which words and themes are most distinctive from one Gospel to the next, and understand the linguistic differences tied to the unique writing styles of each author.</p>
 <p>For some brief context, historians generally agree that Mark was the first gospel to be written, around 70 A.D. Matthew and Luke were written between 80-85 A.D, and are generally believed to have used Mark as a source. These three are known as the synoptic gospels, a term derived from the idea of being “seen together. There are many similarities between these three writings, as they share many of the same stories, structures and, as we see, even wording patterns. Our cluster analysis attempts to quantitatively demonstrate this well-understood belief.</p>
 <p>Apart from these three, there is John. His gospel is believed to have been written last, around 90 A.D. There are many differences between John and the synoptic gospels, for instance, there are several stories told in John that do not appear in the other three, and parts of the chronology are different.</p>
@@ -357,6 +367,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

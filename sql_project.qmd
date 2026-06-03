@@ -2,11 +2,17 @@
 title: "SQL Project"
 ---
 
-## Github Repo
+## Github Project Repo
 
 [Github Repo](https://github.com/ADC-405-S26/Project_2_SQL_Team_7)
 
-## Project Name oooooooo
+## Introduction
+
+This project was focused on using SQL to query database data. My project partner Nick Katz and I focused on force plate jumping metrics. We created our own database using data from three different types of jumps. After created the database we used SQL code to make queries to extract data from the database to create visualizations to compare said data.
+
+## The Data
+
+These tables show the first few lines of the four datasets we combined into our database: Athlete data, CMJ jumps, MR jumps, SJ jumps.
 
 ```{r setup}
 #| message: false
@@ -22,17 +28,14 @@ library(dbplyr)
 library(duckdb) 
 ```
 
-### ---------------------------------------------------------------------------
-# Accessing data
-
 ```{r data loading and cleaning}
 #| message: false
 #| warning: false
 #| include: false
 #Loading - hawkinsr query for last 365 days of tests in KPI baseball players
-CMJ_raw_data <- read.csv("CMJ_Data.csv") 
-MR_raw_data <- read.csv("MultiRebound_Data.csv")
-SJ_raw_data <- read.csv("SJ_Data.csv")
+CMJ_raw_data <- read.csv("sql_project/CMJ_Data.csv")
+MR_raw_data  <- read.csv("sql_project/MultiRebound_Data.csv")
+SJ_raw_data  <- read.csv("sql_project/SJ_Data.csv")
 
 #Master athlete name / id file
 athletes <- CMJ_raw_data %>%
@@ -53,21 +56,16 @@ MR_clean_data <- MR_raw_data[-c(3:4,7:9,12:67,69:100,129:257)]
 readr::write_csv(MR_clean_data, "MR_cleaned.csv")
 ```
 
-
-
-
-### ---------------------------------------------------------------------------
-# Designing the database
-
 ```{r Database creation and optimization}
+#| echo: false
 #| message: false
 #| warning: false
 #| include: false
-con_FP <- DBI::dbConnect(duckdb::duckdb(), dbdir = "Foce_PlateDB")
+con_FP <- DBI::dbConnect(duckdb::duckdb(), dbdir = "sql_project/Foce_PlateDB")
 ```
 
-## Dropping Tables
 ```{sql connection=con_FP}
+--| echo: false
 SHOW TABLES;
 DROP TABLE IF EXISTS CMJ_cleaned;
 DROP TABLE IF EXISTS MR_cleaned;
@@ -75,21 +73,21 @@ DROP TABLE IF EXISTS SJ_cleaned;
 DROP TABLE IF EXISTS athletes;
 ```
 
-## Creating athletes table
 ```{sql connection=con_FP}
+--| echo: false
 CREATE TABLE athletes (
 athlete_id VARCHAR(255) PRIMARY KEY,
 athlete_name VARCHAR(255) NOT NULL);
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 COPY athletes FROM 'athletes.csv' (FORMAT CSV, HEADER, NULL 'NA');
 SELECT * FROM athletes LIMIT 5;
 ```
 
-## creating CMJ table
 ```{sql connection=con_FP}
-
+--| echo: false
 CREATE TABLE CMJ_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -183,17 +181,18 @@ l_r_braking_impulse_index_percent DOUBLE DEFAULT NULL);
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 COPY CMJ_cleaned FROM 'CMJ_cleaned.csv' (FORMAT CSV, HEADER, NULL 'NA');
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 SHOW TABLES;
 SELECT * FROM CMJ_cleaned LIMIT 5;
 ```
 
-## MR and SJ tables
 ```{sql connection=con_FP}
-
+--| echo: false
 CREATE TABLE MR_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -234,17 +233,19 @@ peak_m_rsi DOUBLE DEFAULT NULL);
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 COPY MR_cleaned FROM 'MR_cleaned.csv' (FORMAT CSV, HEADER, NULL 'NA');
 ```
 
 
 ```{sql connection=con_FP}
+--| echo: false
 SHOW TABLES;
 SELECT * FROM MR_cleaned LIMIT 5;
 ```
 
 ```{sql connection=con_FP}
-
+--| echo: false
 CREATE TABLE SJ_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -299,19 +300,23 @@ propulsive_rfd_n_s DOUBLE DEFAULT NULL);
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 COPY SJ_cleaned FROM 'SJ_cleaned.csv' (FORMAT CSV, HEADER, NULL 'NA');
 ```
 
 ```{sql connection=con_FP}
+--| echo: false
 SHOW TABLES;
 SELECT * FROM SJ_cleaned LIMIT 5;
 ```
 
-## Query 1:
+## Querying the Data:
 
-This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance to.
+This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance.
 
 ```{sql connection=con_FP}
+--| output.var: "Left_Right_combined"
+--| echo: false
 
 SELECT a.athlete_name, a.athlete_id, sj.jump_height,
 cmj.cmj_right_avg_propulsive_force_n, 
@@ -371,10 +376,12 @@ head(Left_Right_combined)
 ```
 
 ## Data Visualization: Comparing Left and Right leg propulsive force
+
 The first visualization shows the average propulsive force of the right leg of an athlete compared to the left leg. The second visualization shows the peak propulsive force of the right leg compared tot he left leg. As expected there is a strong correlation between the left and right leg for most athletes. Interestingly, there are several athletes who have both a great left and right leg propulsion, and they sit close tot he top on both, but for some reason they have a lower jump height, which doesn't make too much sense, as you would expect more force to equal more jump height. However, this doesn't take into consideration weight of the athlete when they are jumping, so heavier athletes may produce more force without jumping as high.
 
 ```{r}
 #| echo: false
+#| warning: false
 library(tidyverse)
 
 ggplot(data = Left_Right_combined) +
@@ -391,6 +398,10 @@ ggplot(data = Left_Right_combined) +
 
 ```
 
+```{r}
+#| echo: false
+dbDisconnect(con_FP, shutdown = TRUE)
+```
 
 ### ---------------------------------------------------------------------------
 

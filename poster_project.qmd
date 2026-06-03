@@ -2,10 +2,16 @@
 title: "Poster Project"
 ---
 
-## Github Repo
+## Github Project Repo
 
 [Github Repo](https://github.com/ADC-405-S26/Project_5_PaperPoster_Team_10)
 
-## Poster 
+## Introduction 
 
-just add the poster
+This project was to read a professional paper about a topic within data science, and then create a poster with all of the relevant information from the paper. Myself and Brett Hartlaub read "The Elements of Graphing Data Well' by Steve Figard, which was written as a guide to properly create effective visualizations for data.
+
+## Poster
+
+[Download PDF](poster_project_ADC405.pdf)
+
+<iframe src="poster_project_ADC405.pdf" width="100%" height="900px"></iframe>

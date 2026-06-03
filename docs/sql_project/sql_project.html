@@ -150,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../r_package.html">
  <span class="dropdown-text">R Package</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../poster_project.html">
+ <span class="dropdown-text">Poster Project</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -169,29 +173,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#github-repo" id="toc-github-repo" class="nav-link active" data-scroll-target="#github-repo">Github Repo</a></li>
-  <li><a href="#project-name-oooooooo" id="toc-project-name-oooooooo" class="nav-link" data-scroll-target="#project-name-oooooooo">Project Name oooooooo</a>
+  <li><a href="#intro" id="toc-intro" class="nav-link" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query">Query:</a></li>
+  <li><a href="#data-visualization-comparing-left-and-right-leg-propulsive-force" id="toc-data-visualization-comparing-left-and-right-leg-propulsive-force" class="nav-link" data-scroll-target="#data-visualization-comparing-left-and-right-leg-propulsive-force">Data Visualization: Comparing Left and Right leg propulsive force</a>
   <ul class="collapse">
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">—————————————————————————</a></li>
   </ul></li>
-  <li><a href="#accessing-data" id="toc-accessing-data" class="nav-link" data-scroll-target="#accessing-data">Accessing data</a>
-  <ul class="collapse">
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">—————————————————————————</a></li>
-  </ul></li>
-  <li><a href="#designing-the-database" id="toc-designing-the-database" class="nav-link" data-scroll-target="#designing-the-database">Designing the database</a>
-  <ul class="collapse">
-  <li><a href="#dropping-tables" id="toc-dropping-tables" class="nav-link" data-scroll-target="#dropping-tables">Dropping Tables</a></li>
-  <li><a href="#creating-athletes-table" id="toc-creating-athletes-table" class="nav-link" data-scroll-target="#creating-athletes-table">Creating athletes table</a></li>
-  <li><a href="#creating-cmj-table" id="toc-creating-cmj-table" class="nav-link" data-scroll-target="#creating-cmj-table">creating CMJ table</a></li>
-  <li><a href="#mr-and-sj-tables" id="toc-mr-and-sj-tables" class="nav-link" data-scroll-target="#mr-and-sj-tables">MR and SJ tables</a></li>
-  <li><a href="#query-1" id="toc-query-1" class="nav-link" data-scroll-target="#query-1">Query 1:</a></li>
-  <li><a href="#data-visualization-comparing-left-and-right-leg-propulsive-force" id="toc-data-visualization-comparing-left-and-right-leg-propulsive-force" class="nav-link" data-scroll-target="#data-visualization-comparing-left-and-right-leg-propulsive-force">Data Visualization: Comparing Left and Right leg propulsive force</a>
-  <ul class="collapse">
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">—————————————————————————</a></li>
-  </ul></li>
-  </ul></li>
   <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a>
   <ul class="collapse">
-  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">—————————————————————————</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">—————————————————————————</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -222,40 +212,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="github-repo">Github Repo</h2>
 <p><a href="https://github.com/ADC-405-S26/Project_2_SQL_Team_7">Github Repo</a></p>
 </section>
-<section id="project-name-oooooooo" class="level2">
-<h2 class="anchored" data-anchor-id="project-name-oooooooo">Project Name oooooooo</h2>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">—————————————————————————</h3>
-</section>
-</section>
-<section id="accessing-data" class="level1">
-<h1>Accessing data</h1>
-<section id="section-1" class="level3">
-<h3 class="anchored" data-anchor-id="section-1">—————————————————————————</h3>
-</section>
-</section>
-<section id="designing-the-database" class="level1">
-<h1>Designing the database</h1>
-<section id="dropping-tables" class="level2">
-<h2 class="anchored" data-anchor-id="dropping-tables">Dropping Tables</h2>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>This project was focused on using SQL to query database data. My project partner Nick Katz and I focused on force plate jumping metrics. We created our own database using data from three different types of jumps. After created the database we used SQL code to make queries to extract data from the database to create visualizations to compare said data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> CMJ_cleaned;</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> MR_cleaned;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> SJ_cleaned;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> athletes;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Working directory:"</span>, <span class="fu">getwd</span>(), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Working directory: /cloud/project/sql_project </code></pre>
 </div>
-</section>
-<section id="creating-athletes-table" class="level2">
-<h2 class="anchored" data-anchor-id="creating-athletes-table">Creating athletes table</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> athletes (</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"CMJ exists:"</span>, <span class="fu">file.exists</span>(<span class="st">"CMJ_Data.csv"</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CMJ exists: TRUE </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"CMJ in subfolder exists:"</span>, <span class="fu">file.exists</span>(<span class="st">"sql_project/CMJ_Data.csv"</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>CMJ in subfolder exists: FALSE </code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> athletes <span class="kw">FROM</span> <span class="st">'athletes.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> athletes <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> CMJ_cleaned;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> MR_cleaned;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> SJ_cleaned;</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> athletes;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> athletes (</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> athletes <span class="kw">FROM</span> <span class="st">'athletes.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> athletes <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>5 records</caption>
@@ -290,107 +278,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section>
-<section id="creating-cmj-table" class="level2">
-<h2 class="anchored" data-anchor-id="creating-cmj-table">creating CMJ table</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CMJ_cleaned (</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>impulse_ratio <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>positive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>countermovement_depth_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>unweighting_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_rfd_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>unweighting_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>right_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>force_at_min_displacement_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>avg_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>relative_braking_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>relative_braking_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>avg_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>left_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>l_r_peak_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>right_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>positive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>relative_force_at_min_displacement_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>braking_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>braking_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>left_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>propulsive_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>braking_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>peak_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>braking_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>peak_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>l_r_braking_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CMJ_cleaned (</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>impulse_ratio <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>positive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>countermovement_depth_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>unweighting_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_rfd_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>unweighting_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>right_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>l_r_avg_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>force_at_min_displacement_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>avg_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>relative_braking_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>relative_braking_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>avg_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>left_avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>l_r_peak_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a>right_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a>avg_relative_braking_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a>peak_relative_braking_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a>positive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a>relative_force_at_min_displacement_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a>braking_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>braking_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>left_avg_braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>propulsive_phase_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>braking_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a>peak_braking_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a>avg_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a>braking_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>peak_braking_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>braking_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_braking_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>l_r_braking_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> CMJ_cleaned <span class="kw">FROM</span> <span class="st">'CMJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> CMJ_cleaned <span class="kw">FROM</span> <span class="st">'CMJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> CMJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> CMJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>5 records</caption>
@@ -1031,54 +1016,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 </div>
 </div>
-</section>
-<section id="mr-and-sj-tables" class="level2">
-<h2 class="anchored" data-anchor-id="mr-and-sj-tables">MR and SJ tables</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> MR_cleaned (</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>total_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>number_of_jumps_count <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>peak_jump_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>peak_jump_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>peak_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>l_r_peak_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>peak_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>total_flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>avg_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> MR_cleaned (</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>total_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>number_of_jumps_count <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>top_3_jumps_peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>top_5_jumps_peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>peak_jump_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>peak_jump_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>avg_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>avg_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>peak_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>avg_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>top_3_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>l_r_peak_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>peak_jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>top_5_jumps_avg_contact_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>peak_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>total_flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>avg_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>peak_m_rsi <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> MR_cleaned <span class="kw">FROM</span> <span class="st">'MR_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> MR_cleaned <span class="kw">FROM</span> <span class="st">'MR_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> MR_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> MR_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>5 records</caption>
@@ -1349,65 +1331,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> SJ_cleaned (</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>peak_propuslive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a>propulsive_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> SJ_cleaned (</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">id</span> <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="dt">timestamp</span> BIGINT,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>testType_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>testType_canonicalId <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>athlete_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>athlete_name <span class="dt">VARCHAR</span>(<span class="dv">255</span>),</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>right_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>relative_propulsive_net_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>propulsive_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>jump_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>relative_propulsive_impulse_n_s_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>landing_phase_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>landing_performance_index <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>l_r_avg_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>left_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>peak_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>right_avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>flight_time_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>jump_momentum_kg_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>landing_height_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>time_to_takeoff_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>avg_propulsive_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>takeoff_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>time_to_stabilization_ms <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>avg_propulsive_power_w <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>l_r_peak_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>relative_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>system_weight_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>peak_relative_propulsive_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>peak_velocity_m_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>l_r_avg_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>landing_stiffness_n_m <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>avg_relative_propulsive_power_w_kg <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>right_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>propulsive_net_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>l_r_peak_landing_force_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>left_avg_propulsive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>avg_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>peak_propuslive_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a>left_force_at_peak_landing_force_n <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>l_r_propulsive_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>l_r_landing_impulse_index_percent <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>propulsive_impulse_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>,</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>propulsive_rfd_n_s <span class="dt">DOUBLE</span> <span class="kw">DEFAULT</span> <span class="kw">NULL</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> SJ_cleaned <span class="kw">FROM</span> <span class="st">'SJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> SJ_cleaned <span class="kw">FROM</span> <span class="st">'SJ_cleaned.csv'</span> (FORMAT CSV, <span class="kw">HEADER</span>, <span class="kw">NULL</span> <span class="st">'NA'</span>);</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> SJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>SHOW <span class="kw">TABLES</span>;</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> SJ_cleaned <span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>5 records</caption>
@@ -1783,63 +1765,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="query-1" class="level2">
-<h2 class="anchored" data-anchor-id="query-1">Query 1:</h2>
-<p>This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance to.</p>
+<section id="query" class="level2">
+<h2 class="anchored" data-anchor-id="query">Query:</h2>
+<p>This query will take the left and right leg variables from both the CMJ and SJ tables and combine them to produce one dataset that can be used to compare the left and right legs. The dataset also has a metric (jump_height) to compare performance.</p>
 <div class="cell" data-output.var="Left_Right_combined">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.athlete_name, a.athlete_id, sj.jump_height,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_propulsive_force_n, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_landing_force_n, </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_propulsive_force_n, </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_landing_force_n, </span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_propulsive_force_n,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_landing_force_n,</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_landing_force_n,</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_propulsive_force_n,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_propulsive_force_n, </span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_landing_force_n, </span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_propulsive_force_n, </span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_landing_force_n, </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_propulsive_force_n,</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_landing_force_n,</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_landing_force_n,</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_propulsive_force_n</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> athletes <span class="kw">AS</span> a</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> (</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> cmj_right_avg_propulsive_force_n, </span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> cmj_right_avg_landing_force_n, </span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_propulsive_force_n, </span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_landing_force_n, </span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> cmj_left_avg_propulsive_force_n, </span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> cmj_left_avg_landing_force_n,</span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_propulsive_force_n,</span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_landing_force_n</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> CMJ_cleaned</span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name)</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> cmj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> cmj.athlete_id</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span>(</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> sj_right_avg_propulsive_force_n, </span>
-<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> sj_right_avg_landing_force_n, </span>
-<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_right_force_at_peak_propulsive_force_n, </span>
-<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_right_force_at_peak_landing_force_n, </span>
-<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> sj_left_avg_propulsive_force_n, </span>
-<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> sj_left_avg_landing_force_n,</span>
-<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_left_force_at_peak_propulsive_force_n,</span>
-<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_left_force_at_peak_landing_force_n,</span>
-<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>    jump_height_m <span class="kw">AS</span> jump_height</span>
-<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> SJ_cleaned</span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name, jump_height)</span>
-<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> sj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> sj.athlete_id</span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> cmj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">AND</span> sj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.athlete_name, a.athlete_id, sj.jump_height,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_propulsive_force_n, </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_avg_landing_force_n, </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>cmj.cmj_right_force_at_peak_landing_force_n, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_propulsive_force_n,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>sj.sj_right_avg_landing_force_n,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_landing_force_n,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>sj.sj_right_force_at_peak_propulsive_force_n,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_propulsive_force_n, </span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_avg_landing_force_n, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_propulsive_force_n, </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>cmj.cmj_left_force_at_peak_landing_force_n, </span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_propulsive_force_n,</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>sj.sj_left_avg_landing_force_n,</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_landing_force_n,</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>sj.sj_left_force_at_peak_propulsive_force_n</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> athletes <span class="kw">AS</span> a</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> (</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> cmj_right_avg_propulsive_force_n, </span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> cmj_right_avg_landing_force_n, </span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_right_force_at_peak_landing_force_n, </span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> cmj_left_avg_propulsive_force_n, </span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> cmj_left_avg_landing_force_n,</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_propulsive_force_n,</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> cmj_left_force_at_peak_landing_force_n</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> CMJ_cleaned</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name)</span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> cmj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> cmj.athlete_id</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span>(</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> athlete_name, athlete_id,</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_propulsive_force_n) <span class="kw">AS</span> sj_right_avg_propulsive_force_n, </span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_avg_landing_force_n) <span class="kw">AS</span> sj_right_avg_landing_force_n, </span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_right_force_at_peak_propulsive_force_n, </span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(right_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_right_force_at_peak_landing_force_n, </span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_propulsive_force_n) <span class="kw">AS</span> sj_left_avg_propulsive_force_n, </span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_avg_landing_force_n) <span class="kw">AS</span> sj_left_avg_landing_force_n,</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_propulsive_force_n) <span class="kw">AS</span> sj_left_force_at_peak_propulsive_force_n,</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(left_force_at_peak_landing_force_n) <span class="kw">AS</span> sj_left_force_at_peak_landing_force_n,</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>    jump_height_m <span class="kw">AS</span> jump_height</span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> SJ_cleaned</span>
+<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a>  <span class="kw">GROUP</span> <span class="kw">BY</span> athlete_id, athlete_name, jump_height)</span>
+<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="kw">AS</span> sj <span class="kw">ON</span> a.athlete_id <span class="op">=</span> sj.athlete_id</span>
+<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> cmj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">AND</span> sj.athlete_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Left_Right_combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Left_Right_combined)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     athlete_name           athlete_id jump_height
 1   Zaiden Ocampo YqlkR44ElDRiHJYlZgkK      0.3035
@@ -1925,7 +1907,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sql_project_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sql_project_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1936,14 +1918,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sql_project_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sql_project_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="section-2" class="level3">
-<h3 class="anchored" data-anchor-id="section-2">—————————————————————————</h3>
-</section>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con_FP, <span class="at">shutdown =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section">—————————————————————————</h3>
 </section>
 </section>
 <section id="sources" class="level1">
@@ -1954,8 +1938,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>https://www.sportsmith.co/articles/selecting-the-right-metrics-for-vertical-jump-testing/</p></li>
 <li><p>Google Gemini</p></li>
 </ul>
-<section id="section-3" class="level3">
-<h3 class="anchored" data-anchor-id="section-3">—————————————————————————</h3>
+<section id="section-1" class="level3">
+<h3 class="anchored" data-anchor-id="section-1">—————————————————————————</h3>
 
 
 </section>
