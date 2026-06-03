@@ -14,6 +14,8 @@ This was a Shiny App project completed in another class. I created a shiny app t
 
 [Open the app in a separate tab](https://019e8eea-002f-eb91-0f49-0354590bcc81.share.connect.posit.cloud)
 
+You will require a Posit Cloud account to view this project. 
+
 It may take a few seconds for the scatterplot to appear as there is a lot of data being processed.
 
 <iframe

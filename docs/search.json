@@ -354,7 +354,7 @@
     "href": "shinyapp_project.html#interactive-shiny-app",
     "title": "Shinyapp Project",
     "section": "Interactive Shiny App",
-    "text": "Interactive Shiny App\nOpen the app in a separate tab\nIt may take a few seconds for the scatterplot to appear as there is a lot of data being processed."
+    "text": "Interactive Shiny App\nOpen the app in a separate tab\nYou will require a Posit Cloud account to view this project.\nIt may take a few seconds for the scatterplot to appear as there is a lot of data being processed."
   },
   {
     "objectID": "shinyapp_project.html#github-project-repo",
