@@ -90,6 +90,7 @@ SELECT * FROM athletes LIMIT 5;
 
 ```{sql connection=con_FP}
 --| echo: false
+-- creating a table for CMJ data
 CREATE TABLE CMJ_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -184,6 +185,7 @@ l_r_braking_impulse_index_percent DOUBLE DEFAULT NULL);
 
 ```{sql connection=con_FP}
 --| echo: false
+-- creating cleaned version
 COPY CMJ_cleaned FROM 'CMJ_cleaned.csv' (FORMAT CSV, HEADER, NULL 'NA');
 ```
 
@@ -195,6 +197,7 @@ SELECT * FROM CMJ_cleaned LIMIT 5;
 
 ```{sql connection=con_FP}
 --| echo: false
+-- creating table for MR data
 CREATE TABLE MR_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -248,6 +251,7 @@ SELECT * FROM MR_cleaned LIMIT 5;
 
 ```{sql connection=con_FP}
 --| echo: false
+-- create table for SJ data
 CREATE TABLE SJ_cleaned (
 id VARCHAR(255) PRIMARY KEY,
 timestamp BIGINT,
@@ -319,6 +323,7 @@ This query will take the left and right leg variables from both the CMJ and SJ t
 ```{sql connection=con_FP}
 --| output.var: "Left_Right_combined"
 --| echo: false
+-- selecting athlete name and athlete id, and the other metrics from the CMJ and SJ tables
 
 SELECT a.athlete_name, a.athlete_id, sj.jump_height,
 cmj.cmj_right_avg_propulsive_force_n, 
@@ -341,6 +346,7 @@ sj.sj_left_avg_landing_force_n,
 sj.sj_left_force_at_peak_landing_force_n,
 sj.sj_left_force_at_peak_propulsive_force_n
 
+-- joining the data together from CMJ and SJ tables
 FROM athletes AS a
 LEFT JOIN (
   SELECT athlete_name, athlete_id,
@@ -386,12 +392,14 @@ The first visualization shows the average propulsive force of the right leg of a
 #| warning: false
 library(tidyverse)
 
+# creating a plot that shows how the right and left legs compare for avg propulsice force
 ggplot(data = Left_Right_combined) +
   geom_point(aes(x = sj_right_avg_propulsive_force_n, y = sj_left_avg_propulsive_force_n, color = jump_height), alpha = 0.5) + 
   labs(title = "Left and Right Leg Average Propulsive Force", 
        x = "Right Leg AveragePropuslive Force",
        y = "Left Leg Average Propuslive Force")
 
+# creating a plto to show how left and right leg compare for peak force
 ggplot(data = Left_Right_combined) +
   geom_point(aes(x = sj_right_force_at_peak_propulsive_force_n, y = sj_left_force_at_peak_propulsive_force_n, color = jump_height), alpha = 0.5) + 
   labs(title = "Left and Right Leg Peak Propulsive Force", 
